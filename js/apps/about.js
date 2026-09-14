@@ -50,33 +50,33 @@ export default {
         </div>
         <div class="currently">
           <h3>Currently <span class="live-pill" id="about-live" hidden><i></i><span></span></span></h3>
-          <ul id="about-live-list" class="live-list"></ul>
-          <ul>
-            ${p.currently?.playing ? `<li><span>🎮</span>playing <b>${esc(p.currently.playing)}</b></li>` : ''}
-            ${p.currently?.listening ? `<li><span>🎧</span>listening to <b>${esc(p.currently.listening)}</b></li>` : ''}
-            ${p.currently?.building ? `<li><span>🛠️</span>building <b>${esc(p.currently.building)}</b></li>` : ''}
-            ${p.currently?.reading ? `<li><span>📖</span>reading <b>${esc(p.currently.reading)}</b></li>` : ''}
-          </ul>
+          <ul id="about-current" class="live-list"></ul>
         </div>
       </div>`;
 
-    // Live rows from Discord (Lanyard) sit above the hand-edited ones
-    const liveList = root.querySelector('#about-live-list');
+    // "Currently" rows: live Discord data wins, then profile.json, then "nothing"
+    const list = root.querySelector('#about-current');
     const pill = root.querySelector('#about-live');
-    const renderLive = (pr) => {
-      if (!pr) return;
-      const st = STATUS[pr.status] || STATUS.offline;
-      pill.hidden = false;
-      pill.querySelector('i').style.background = st.color;
-      pill.querySelector('span').textContent = st.label;
+    const manual = p.currently || {};
+    const renderCurrent = (pr) => {
+      if (pr) {
+        const st = STATUS[pr.status] || STATUS.offline;
+        pill.hidden = false;
+        pill.querySelector('i').style.background = st.color;
+        pill.querySelector('span').textContent = st.label;
+      }
       const rows = [];
-      if (pr.spotify) rows.push(`<li class="live-row">${pr.spotify.art ? `<img src="${esc(pr.spotify.art)}" alt="" class="live-art">` : '<span>🎧</span>'}<div>listening to <b>${esc(pr.spotify.song)}</b><small>${esc(pr.spotify.artist)}</small></div><span class="live-tag">live</span></li>`);
-      if (pr.game) rows.push(`<li class="live-row"><span>🎮</span><div>playing <b>${esc(pr.game.name)}</b>${pr.game.details ? `<small>${esc(pr.game.details)}${pr.game.state ? ` · ${esc(pr.game.state)}` : ''}</small>` : ''}${pr.game.since ? `<small>for ${elapsed(pr.game.since)}</small>` : ''}</div><span class="live-tag">live</span></li>`);
-      if (pr.custom?.text) rows.push(`<li class="live-row"><span>${esc(pr.custom.emoji || '💬')}</span><div>${esc(pr.custom.text)}</div><span class="live-tag">status</span></li>`);
-      liveList.innerHTML = rows.join('');
+      if (pr?.game) rows.push(`<li class="live-row"><span>🎮</span><div>playing <b>${esc(pr.game.name)}</b>${pr.game.details ? `<small>${esc(pr.game.details)}${pr.game.state ? ` · ${esc(pr.game.state)}` : ''}</small>` : ''}${pr.game.since ? `<small>for ${elapsed(pr.game.since)}</small>` : ''}</div><span class="live-tag">live</span></li>`);
+      else rows.push(`<li><span>🎮</span>playing <b>${esc(manual.playing || 'nothing')}</b></li>`);
+      if (pr?.spotify) rows.push(`<li class="live-row">${pr.spotify.art ? `<img src="${esc(pr.spotify.art)}" alt="" class="live-art">` : '<span>🎧</span>'}<div>listening to <b>${esc(pr.spotify.song)}</b><small>${esc(pr.spotify.artist)}</small></div><span class="live-tag">live</span></li>`);
+      else rows.push(`<li><span>🎧</span>listening to <b>${esc(manual.listening || 'nothing')}</b></li>`);
+      if (pr?.custom?.text) rows.push(`<li class="live-row"><span>${esc(pr.custom.emoji || '💬')}</span><div>${esc(pr.custom.text)}</div><span class="live-tag">status</span></li>`);
+      if (manual.building) rows.push(`<li><span>🛠️</span>building <b>${esc(manual.building)}</b></li>`);
+      if (manual.reading) rows.push(`<li><span>📖</span>reading <b>${esc(manual.reading)}</b></li>`);
+      list.innerHTML = rows.join('');
     };
-    renderLive(presence());
-    onLive = (e) => renderLive(e.detail);
+    renderCurrent(presence());
+    onLive = (e) => renderCurrent(e.detail);
     live.addEventListener('update', onLive);
 
     const timeEl = root.querySelector('#about-time');

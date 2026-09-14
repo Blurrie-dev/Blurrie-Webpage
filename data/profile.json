@@ -28,8 +28,8 @@
   "timezone": "America/Toronto",
   "codingSince": 2015,
   "currently": {
-    "playing": "(your current game)",
-    "listening": "(your current album)",
+    "playing": "",
+    "listening": "",
     "building": "this website",
     "reading": ""
   },
@@ -53,6 +53,12 @@
       "label": "GitHub",
       "handle": "@Blurrie-dev",
       "url": "https://github.com/Blurrie-dev"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "handle": "@_hudson_lin_",
+      "url": "https://www.instagram.com/_hudson_lin_/"
     },
     {
       "id": "email",

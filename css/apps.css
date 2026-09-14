@@ -473,6 +473,8 @@
 .live-pill { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; font-size: 11px; font-weight: normal; color: var(--text-muted); vertical-align: middle; }
 .live-pill i, .social-live i { width: 8px; height: 8px; border-radius: 50%; background: #80848e; display: inline-block; }
 .live-list { list-style: none; padding: 0; margin: 0 0 4px; }
+.live-list > li:not(.live-row) { padding: 4px 0; }
+.live-list > li:not(.live-row) > span:first-child { display: inline-block; width: 26px; }
 .live-row { display: flex; align-items: center; gap: 10px; padding: 6px 8px; margin-bottom: 4px; background: var(--face); color: var(--text); box-shadow: var(--bevel-out); }
 [data-theme="fluent"] .live-row { box-shadow: none; border: 1px solid #e0e0e0; }
 .live-row > span:first-child { width: 26px; text-align: center; font-size: 16px; }
