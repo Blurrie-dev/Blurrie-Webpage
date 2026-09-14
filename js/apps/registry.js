@@ -12,7 +12,6 @@ import music from './music.js';
 import quiz from './quiz.js';
 import terminal from './terminal.js';
 import snake from './snake.js';
-import achievements from './achievements.js';
 import contact from './contact.js';
 import settings from './settings.js';
 import sysinfo from './sysinfo.js';
@@ -27,7 +26,6 @@ export const apps = [
   terminal,
   snake,
   contact,
-  achievements,
   settings,
   sysinfo,
 ];

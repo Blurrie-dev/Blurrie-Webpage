@@ -23,19 +23,38 @@ export default {
   async mount(root, ctx) {
     root.classList.add('no-pad');
     root.innerHTML = '<p class="muted" style="padding:12px">Loading library…</p>';
-    const [games, profile] = await Promise.all([loadData('games'), loadData('profile')]);
+    const [games, profile, steamData] = await Promise.all([
+      loadData('games'), loadData('profile'), loadData('steam').catch(() => null), // steam.json is optional
+    ]);
+    // Merge live Steam numbers (from the GitHub Action) into the hand-written list by title
+    const byName = new Map([...(steamData?.top || []), ...(steamData?.recent || [])].map((g) => [g.name.toLowerCase(), g]));
+    for (const g of games) {
+      const s = byName.get((g.title || '').toLowerCase());
+      if (s) { g.hours = s.hours; g.image = g.image || s.image; g.appid = s.appid; g.hours2w = s.hours2w; }
+    }
     const sorted = games.slice().sort((a, b) => (b.hours || 0) - (a.hours || 0));
-    const total = sorted.reduce((s, g) => s + (g.hours || 0), 0);
+    const total = steamData?.totalHours || sorted.reduce((s, g) => s + (g.hours || 0), 0);
+    const count = steamData?.totalGames || sorted.length;
     const steam = (profile.socials || []).find((s) => s.id === 'steam');
+    const updated = steamData?.updated ? new Date(steamData.updated) : null;
 
     root.innerHTML = `
       <div class="steam">
         <div class="steam-bar">
           <span class="steam-logo" aria-hidden="true">♨</span>
           <b>LIBRARY</b>
-          <span class="steam-stat">${sorted.length} games · ${total.toLocaleString()} hrs on record</span>
+          <span class="steam-stat">${count} games · ${total.toLocaleString()} hrs on record${updated ? ` · <span title="${updated.toLocaleString()}">live from Steam</span>` : ''}</span>
           ${steam ? `<a class="steam-link" href="${esc(steam.url)}" target="_blank" rel="noopener noreferrer">View Steam profile ↗</a>` : ''}
         </div>
+        ${steamData?.recent?.length ? `
+        <div class="steam-recent">
+          <span class="steam-recent-label">RECENT ACTIVITY</span>
+          ${steamData.recent.map((g) => `
+            <a class="steam-card" href="https://store.steampowered.com/app/${g.appid}" target="_blank" rel="noopener noreferrer" title="${esc(g.name)} — ${g.hours2w} hrs past two weeks">
+              <img src="${esc(g.image)}" alt="" loading="lazy">
+              <span>${esc(g.name)}</span><small>${g.hours2w}h · 2 wks</small>
+            </a>`).join('')}
+        </div>` : ''}
         <div class="steam-body">
           <ul class="steam-list" role="listbox" aria-label="Games">
             ${sorted.map((g, i) => `
@@ -57,6 +76,7 @@ export default {
       const st = STATUS[g.status] || { label: g.status || '', cls: '' };
       list.querySelectorAll('li').forEach((li) => li.classList.toggle('selected', +li.dataset.i === i));
       detail.innerHTML = `
+        ${g.image ? `<img class="steam-banner" src="${esc(g.image)}" alt="" loading="lazy">` : ''}
         <div class="steam-hero">
           <span class="steam-hero-icon" aria-hidden="true">${esc(g.icon || '🎮')}</span>
           <div>
@@ -65,13 +85,13 @@ export default {
           </div>
         </div>
         <dl class="steam-facts">
-          <dt>Time played</dt><dd><b>${(g.hours || 0).toLocaleString()}</b> hrs</dd>
+          <dt>Time played</dt><dd><b>${(g.hours || 0).toLocaleString()}</b> hrs${g.hours2w ? ` <span class="muted">· ${g.hours2w}h past two weeks</span>` : ''}</dd>
           <dt>Status</dt><dd><span class="steam-status ${st.cls}">${esc(st.label)}</span></dd>
           <dt>My rating</dt><dd class="steam-stars" title="${g.rating || 0} / 5">${stars(g.rating || 0)}</dd>
           ${g.year ? `<dt>Released</dt><dd>${g.year}</dd>` : ''}
         </dl>
         ${g.take ? `<blockquote class="steam-take">“${esc(g.take)}”</blockquote>` : ''}
-        ${g.url ? `<a class="btn" href="${esc(g.url)}" target="_blank" rel="noopener noreferrer">Store page ↗</a>` : ''}`;
+        ${g.url || g.appid ? `<a class="btn" href="${esc(g.url || `https://store.steampowered.com/app/${g.appid}`)}" target="_blank" rel="noopener noreferrer">Store page ↗</a>` : ''}`;
       ctx.setStatus(`${esc(g.title)} — ${(g.hours || 0).toLocaleString()} hours. ${total ? Math.round((g.hours || 0) / total * 100) : 0}% of my total.`);
     };
 

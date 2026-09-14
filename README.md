@@ -20,6 +20,21 @@ Then open <http://localhost:5173>.
 All personal content lives in `data/*.json` — nothing is hard-coded in JS.
 Start with `data/profile.json` (bio, location, socials).
 
+## Live data
+
+- **Discord status** (tray dot, About "Currently", Contact card) comes from
+  [Lanyard](https://github.com/Phineas/lanyard) using `discordId` in
+  `data/profile.json`. Join the Lanyard Discord server once and it just works;
+  link Spotify to Discord to get now-playing too.
+- **GitHub stars** on projects are fetched live when `repo` is set in
+  `data/projects.json`.
+- **Steam** (recent activity, real hours, artwork) is refreshed every 6 hours by
+  `.github/workflows/steam-sync.yml`, which writes `data/steam.json`. Set two
+  repository secrets: `STEAM_API_KEY` (from steamcommunity.com/dev/apikey) and
+  `STEAM_ID` (SteamID64). Your Steam profile's *Game details* must be public.
+  Run it once by hand from the Actions tab; without the file the Games app
+  simply uses `data/games.json`.
+
 ## Layout
 
 ```
@@ -27,6 +42,8 @@ index.html        the OS shell
 css/              base, themes, shell (windows/taskbar), apps
 js/wm.js          window manager
 js/apps/          one module per app; registry.js lists them
-js/gimmicks/      boot screen, shutdown, easter eggs
+js/gimmicks/      boot screen, shutdown, BSOD, Konami, assistant
+js/live.js        Discord presence via Lanyard
+scripts/          steam-sync.mjs (run by the GitHub Action)
 data/             your content (JSON)
 ```

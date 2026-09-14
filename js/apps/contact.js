@@ -2,6 +2,9 @@
 
 import { loadData } from '../data.js';
 import { esc } from '../ui.js';
+import { live, presence, STATUS, describe } from '../live.js';
+
+let onLive = null;
 
 const ICONS = {
   discord: '💬', steam: '🎮', github: '🐙', email: '✉️', twitter: '🐦', x: '✖️',
@@ -27,6 +30,7 @@ export default {
             <span class="social-icon" aria-hidden="true">${esc(s.icon || ICONS[s.id] || '🔗')}</span>
             <b>${esc(s.label)}</b>
             ${s.handle ? `<small>${esc(s.handle)}</small>` : ''}
+            ${s.id === 'discord' ? '<span class="social-live" id="contact-live" hidden><i></i><span></span></span>' : ''}
           </a>`).join('')}
       </div>
       <div class="social-row">
@@ -45,6 +49,24 @@ export default {
       }
     });
 
+    const liveEl = root.querySelector('#contact-live');
+    const renderLive = (p) => {
+      if (!p || !liveEl) return;
+      const st = STATUS[p.status] || STATUS.offline;
+      const d = describe(p);
+      liveEl.hidden = false;
+      liveEl.querySelector('i').style.background = st.color;
+      liveEl.querySelector('span').textContent = d && d.text !== st.label ? `${st.label} · ${d.text}` : st.label;
+    };
+    renderLive(presence());
+    onLive = (e) => renderLive(e.detail);
+    live.addEventListener('update', onLive);
+
     ctx.setStatus(`${socials.length} way${socials.length === 1 ? '' : 's'} to reach me`);
+  },
+
+  unmount() {
+    if (onLive) live.removeEventListener('update', onLive);
+    onLive = null;
   },
 };

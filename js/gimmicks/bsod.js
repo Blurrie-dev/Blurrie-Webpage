@@ -2,7 +2,6 @@
 // back to the desktop (everything is still there — it's just an overlay).
 
 import { sfx } from '../sfx.js';
-import { unlock } from '../achievements.js';
 
 let active = false;
 
@@ -29,7 +28,6 @@ export function bsod(stopCode = 'CRITICAL_PROCESS_DIED', detail = '') {
       <p class="bsod-hint" id="bsod-hint" hidden>Press any key to restart.</p>
     </div>`;
   document.body.appendChild(el);
-  unlock('bsod');
 
   const pct = el.querySelector('#bsod-pct');
   const hint = el.querySelector('#bsod-hint');

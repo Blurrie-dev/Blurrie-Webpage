@@ -4,6 +4,7 @@ import { wm, listWindows, activeWindow, focusWindow, minimizeWindow } from './wm
 import { cycleTheme, THEMES, currentTheme, themeEvents } from './theme.js';
 import { sfx } from './sfx.js';
 import { toast, esc } from './ui.js';
+import { live, STATUS, describe } from './live.js';
 
 const THEME_ICON = { fluent: '🪟', luna: '🌄', classic: '🎨', midnight: '🌙' };
 
@@ -18,7 +19,7 @@ export function initTaskbar() {
     <div class="tray">
       <button class="tray-btn" id="tray-theme" title="Switch theme"></button>
       <button class="tray-btn" id="tray-sound" title="Toggle sounds"></button>
-      <span class="status-dot" id="tray-status" title="Discord status (coming in Phase 5)"></span>
+      <span class="status-dot" id="tray-status" title="Discord: connecting…"></span>
       <span class="clock" id="clock"><span class="clock-time" id="clock-time"></span><span class="clock-date" id="clock-date"></span></span>
     </div>`;
 
@@ -68,6 +69,18 @@ export function initTaskbar() {
   });
   document.addEventListener('hudsonos:soundchange', renderSound);
   renderSound();
+
+  // Live Discord status dot
+  const dot = bar.querySelector('#tray-status');
+  live.addEventListener('update', (e) => {
+    const p = e.detail;
+    if (!p) return;
+    const st = STATUS[p.status] || STATUS.offline;
+    dot.style.background = st.color;
+    dot.style.boxShadow = p.status === 'offline' ? '' : `0 0 6px ${st.color}`;
+    const d = describe(p);
+    dot.title = `Discord: ${st.label}${d && d.text !== st.label ? ` — ${d.text}` : ''}`;
+  });
 
   // Clock
   const clock = bar.querySelector('#clock');

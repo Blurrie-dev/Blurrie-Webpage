@@ -3,7 +3,6 @@
 
 import { store } from '../store.js';
 import { esc } from '../ui.js';
-import { unlock } from '../achievements.js';
 
 const TIPS = {
   welcome:     { when: 'idle', text: 'Hi! I\'m Clip. It looks like you\'re on a desktop. Double-click an icon to open it, or press Start.', mobile: 'Hi! I\'m Clip. Tap an icon to open it, or press the Start button.' },
@@ -15,7 +14,6 @@ const TIPS = {
   terminal:    { when: 'open', text: 'Type help to see what I know. Type rm -rf / to see what I don\'t survive.' },
   timeline:    { when: 'open', text: 'Drag the slider at the top to travel through time. No DeLorean required.' },
   contact:     { when: 'open', text: 'Discord is fastest. There\'s a copy button so you don\'t typo the underscores.' },
-  explorer:    { when: 'explored', text: 'You\'ve been busy. There\'s an Achievements app in the Start menu keeping score.' },
 };
 
 const CLIP_SVG = `
@@ -64,7 +62,7 @@ function show(id) {
     <div class="clip-char">${CLIP_SVG}</div>`;
   el.addEventListener('click', (e) => {
     const act = e.target.closest('[data-act]')?.dataset.act;
-    if (act === 'never') { setAssistantEnabled(false); unlock('clippy'); }
+    if (act === 'never') setAssistantEnabled(false);
     if (act) hide();
   });
   document.body.appendChild(el);
@@ -72,14 +70,12 @@ function show(id) {
   hideTimer = setTimeout(hide, 14_000);
 }
 
-export function initAssistant({ wm, store: s }) {
+export function initAssistant({ wm }) {
   // Welcome tip if the visitor hasn't opened anything a few seconds in
   setTimeout(() => { if (!document.querySelector('.window')) show('welcome'); }, 4000);
 
   wm.addEventListener('open', (e) => {
     const id = e.detail.id;
     setTimeout(() => show(id), 1800);
-    const opened = new Set(s.get('apps-opened', []));
-    if (opened.size >= 3) setTimeout(() => show('explorer'), 6000);
   });
 }

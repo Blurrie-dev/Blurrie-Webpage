@@ -4,7 +4,6 @@ import { store } from '../store.js';
 import { toast } from '../ui.js';
 import { openApp } from '../wm.js';
 import { refreshDesktop } from '../desktop.js';
-import { unlock } from '../achievements.js';
 
 const CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
@@ -25,7 +24,6 @@ export function initKonami() {
     if (pos !== CODE.length) return;
     pos = 0;
     const fresh = unlockApp('snake');
-    unlock('konami');
     toast(fresh ? 'Cheat code accepted. Snake.exe installed on the desktop.' : 'Cheat code accepted. Again.', { icon: '🎮', duration: 5000 });
     setTimeout(() => openApp('snake'), 600);
   });

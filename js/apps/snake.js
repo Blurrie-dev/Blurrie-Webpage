@@ -1,7 +1,5 @@
 // Snake. Unlocked by the Konami code. Arrows / WASD / swipe / on-screen pad.
 
-import { unlock } from '../achievements.js';
-
 const GRID = 20;
 const DIRS = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0], w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
 
@@ -91,8 +89,6 @@ export default {
         g.score++;
         scoreEl.textContent = g.score;
         ctx.sfx.play('click');
-        if (g.score === 10) unlock('snake10');
-        if (g.score === 30) unlock('snake30');
         if (g.score % 5 === 0 && g.speed > 60) { g.speed -= 12; clearInterval(g.timer); g.timer = setInterval(step, g.speed); }
         placeFood();
       } else {

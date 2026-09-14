@@ -6,7 +6,6 @@ import { esc } from '../ui.js';
 import { apps } from './registry.js';
 import { THEMES, applyTheme, currentTheme } from '../theme.js';
 import { bsod } from '../gimmicks/bsod.js';
-import { unlock, unlocked, ACHIEVEMENTS } from '../achievements.js';
 import { isUnlocked } from '../gimmicks/konami.js';
 
 const BOOTED_AT = Date.now();
@@ -89,7 +88,6 @@ export default {
         print(`Theme set to ${esc(args[0])}.`);
       } },
       neofetch: { desc: 'system info, but pretty', run: () => {
-        unlock('neofetch');
         const info = [
           `<b>visitor</b>@<b>hudsonos</b>`, '-----------------',
           `<b>OS:</b> HudsonOS 0.4 x86_64`, `<b>Host:</b> ${esc(navigator.platform || 'browser')}`,
@@ -97,16 +95,10 @@ export default {
           `<b>Shell:</b> fake.sh`, `<b>Resolution:</b> ${innerWidth}x${innerHeight}`,
           `<b>WM:</b> wm.js`, `<b>Theme:</b> ${currentTheme()}`,
           `<b>Windows:</b> ${document.querySelectorAll('.window').length} open`,
-          `<b>Achievements:</b> ${unlocked().length}/${ACHIEVEMENTS.length}`,
         ];
         const rows = Math.max(LOGO.length, info.length);
         for (let i = 0; i < rows; i++) print(`<span class="term-logo">${esc(LOGO[i] || ' '.repeat(40))}</span>   ${info[i] || ''}`, 'term-pre');
         print(`<span class="term-swatch">${['#ff5f57', '#febc2e', '#28c840', '#0078d7', '#c86dd7', '#00e5c8', '#fff', '#888'].map((c) => `<i style="background:${c}"></i>`).join('')}</span>`);
-      } },
-      achievements: { desc: 'what you have unlocked', run: () => {
-        const have = unlocked();
-        print(`${have.length}/${ACHIEVEMENTS.length} unlocked. <span class="muted">open achievements</span> for the full list.`);
-        ACHIEVEMENTS.filter((a) => have.includes(a.id)).forEach((a) => print(`  ${esc(a.icon)} ${esc(a.title)}`));
       } },
       whoami: { desc: 'who are you', run: () => print('visitor. Nice to meet you.') },
       date: { desc: 'current date', run: () => print(esc(new Date().toString())) },
@@ -114,7 +106,7 @@ export default {
       history: { desc: 'command history', run: () => history.forEach((h, i) => print(`  ${String(i + 1).padStart(3)}  ${esc(h)}`)) },
       clear: { desc: 'clear the screen', run: () => { out.innerHTML = ''; } },
       exit: { desc: 'close the terminal', run: () => ctx.close() },
-      sudo: { desc: 'you wish', run: () => { unlock('sudo'); print('visitor is not in the sudoers file. This incident will be reported.', 'term-err'); } },
+      sudo: { desc: 'you wish', run: () => { print('visitor is not in the sudoers file. This incident will be reported.', 'term-err'); } },
       snake: { hidden: true, run: () => isUnlocked('snake') ? ctx.openApp('snake') : print('snake: command not found… yet. Try a cheat code.', 'term-err') },
       cat: { hidden: true, run: (args) => args[0] ? print(`cat: ${esc(args[0])}: Permission denied. It's personal.`, 'term-err') : print('usage: cat <file>') },
       cd: { hidden: true, run: () => print("There's nowhere else to go.") },

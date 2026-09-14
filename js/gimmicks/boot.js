@@ -9,7 +9,7 @@ const LINES = [
   ['Mounting /hobbies ............. OK', 'ok'],
   ['Loading hot takes ............. WARNING', 'warn', 'too many'],
   ['Calibrating sense of humour ... OK', 'ok'],
-  ['Connecting to Discord ......... SKIPPED', 'dim', 'Phase 5'],
+  ['Connecting to Discord ......... OK', 'ok'],
   ['Starting window manager ....... OK', 'ok'],
   ['', ''],
   ['Booting HudsonOS...', ''],

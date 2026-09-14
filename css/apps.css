@@ -270,6 +270,15 @@
 .steam-link { color: #66c0f4; text-decoration: none; white-space: nowrap; }
 .steam-link:hover { text-decoration: underline; }
 .steam-body { flex: 1; min-height: 0; display: flex; flex-wrap: wrap; overflow: auto; }
+.steam-recent { flex: none; display: flex; gap: 8px; align-items: center; padding: 8px 12px; overflow-x: auto; background: #16202d; border-bottom: 1px solid #2a475e; }
+.steam-recent-label { flex: none; font-size: 10px; letter-spacing: 1px; color: #8f98a0; writing-mode: vertical-rl; transform: rotate(180deg); }
+.steam-card { flex: none; width: 128px; display: flex; flex-direction: column; gap: 2px; color: #c7d5e0; text-decoration: none; font-size: 11px; }
+.steam-card img { width: 128px; height: 60px; object-fit: cover; border-radius: 2px; background: #2a475e; }
+.steam-card span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.steam-card small { color: #8f98a0; }
+.steam-card:hover { color: #fff; }
+.steam-banner { width: 100%; max-height: 120px; object-fit: cover; border-radius: 3px; margin-bottom: 10px; }
+.steam .muted { color: #8f98a0; font-size: 11px; }
 .steam-list {
   flex: 1 0 210px;
   max-width: 260px;
@@ -459,24 +468,16 @@
 .snake-pad [data-dir="ArrowRight"] { grid-area: right; }
 @media (pointer: fine) { .snake-pad { display: none; } }
 
-/* ---------- Achievements ---------- */
-.ach-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 14px; }
-.ach-head h2 { margin-bottom: 2px; }
-.ach-bar { flex: 1 0 140px; height: 8px; background: var(--face); box-shadow: var(--bevel-in); }
-.ach-bar div { height: 100%; background: var(--accent); transition: width .4s; }
-.ach-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-.ach-card {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-  background: var(--face);
-  color: var(--text);
-  box-shadow: var(--bevel-out);
-  min-height: 108px;
-}
-.ach-card.locked { opacity: .55; filter: grayscale(1); }
-.ach-icon { font-size: 26px; line-height: 1; }
-.ach-card b { font-size: 13px; }
-.ach-card small { color: var(--text-muted); line-height: 1.3; }
-[data-theme="fluent"] .ach-card { box-shadow: none; border: 1px solid #e0e0e0; }
+
+/* ---------- Live presence (Lanyard) ---------- */
+.live-pill { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; font-size: 11px; font-weight: normal; color: var(--text-muted); vertical-align: middle; }
+.live-pill i, .social-live i { width: 8px; height: 8px; border-radius: 50%; background: #80848e; display: inline-block; }
+.live-list { list-style: none; padding: 0; margin: 0 0 4px; }
+.live-row { display: flex; align-items: center; gap: 10px; padding: 6px 8px; margin-bottom: 4px; background: var(--face); color: var(--text); box-shadow: var(--bevel-out); }
+[data-theme="fluent"] .live-row { box-shadow: none; border: 1px solid #e0e0e0; }
+.live-row > span:first-child { width: 26px; text-align: center; font-size: 16px; }
+.live-row div { flex: 1; min-width: 0; }
+.live-row small { display: block; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.live-art { width: 34px; height: 34px; object-fit: cover; flex: none; }
+.live-tag { font-size: 10px; text-transform: uppercase; letter-spacing: .5px; padding: 1px 6px; border-radius: 8px; background: #23a55a; color: #fff; }
+.social-live { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); margin-top: 2px; }

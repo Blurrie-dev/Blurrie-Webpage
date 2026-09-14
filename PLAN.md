@@ -113,13 +113,9 @@ Prioritised roughly by effort-to-delight ratio.
 4. **Clippy-style assistant** — a little character in the corner that offers
    context hints ("It looks like you're reading my bio. Want to see my projects?")
    with a dismiss button. Great for guiding visitors to content.
-5. **Live wallpaper** — subtle canvas animation (starfield, pipes screensaver,
-   Matrix rain) chosen per theme; low CPU, pauses when tab hidden.
-6. **Screensaver** — after 60s idle, the classic bouncing-DVD-logo / flying
-   toasters takes over; any input dismisses it.
-7. **Achievements** — small toasts for exploring: "Opened 5 apps", "Found the
-   terminal", "Scored 10/10". Stored in `localStorage`; an `Achievements.exe`
-   shows progress. Turns browsing into a light game.
+5. ~~Live wallpaper~~ — dropped; the static hero wallpaper is enough.
+6. ~~Screensaver~~ — built, then removed as too much.
+7. ~~Achievements~~ — built, then removed as too much.
 8. **Drag-and-drop desktop** — rearrange icons, drop a project onto the Recycle
    Bin for a "Nice try." dialog.
 9. **Cursor trail / custom cursor** toggle in Settings.
