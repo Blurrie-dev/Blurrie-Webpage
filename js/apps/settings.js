@@ -4,6 +4,8 @@ import { THEMES, applyTheme, currentTheme, themeEvents } from '../theme.js';
 import { sfx } from '../sfx.js';
 import { store } from '../store.js';
 import { esc } from '../ui.js';
+import { assistantEnabled, setAssistantEnabled } from '../gimmicks/assistant.js';
+import { openApp } from '../wm.js';
 
 const SWATCH = {
   fluent: 'linear-gradient(90deg, #072047 50%, #0078d7 50%)',
@@ -38,8 +40,17 @@ export default {
           <label><input type="checkbox" id="set-sound"> Play UI sound effects</label>
         </fieldset>
         <fieldset class="fieldset">
+          <legend>Assistant</legend>
+          <label><input type="checkbox" id="set-clip"> Let Clip the paperclip offer tips</label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend>Progress</legend>
+          <p class="muted">Achievements are stored in this browser.</p>
+          <div class="actions"><button class="btn" id="set-ach">View achievements</button></div>
+        </fieldset>
+        <fieldset class="fieldset">
           <legend>Danger zone</legend>
-          <p class="muted">Forgets your theme, sound choice and any progress stored in this browser.</p>
+          <p class="muted">Forgets your theme, sound choice, achievements, unlocked apps and quiz scores.</p>
           <div class="actions"><button class="btn" id="set-reset">Reset HudsonOS</button></div>
         </fieldset>
       </div>`;
@@ -47,6 +58,7 @@ export default {
     const sync = () => {
       root.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = r.value === currentTheme(); });
       root.querySelector('#set-sound').checked = sfx.enabled();
+      root.querySelector('#set-clip').checked = assistantEnabled();
     };
     sync();
     offTheme = () => sync();
@@ -54,6 +66,7 @@ export default {
 
     root.addEventListener('change', (e) => {
       if (e.target.name === 'theme') { applyTheme(e.target.value); sfx.play('click'); }
+      if (e.target.id === 'set-clip') setAssistantEnabled(e.target.checked);
       if (e.target.id === 'set-sound') {
         sfx.setEnabled(e.target.checked);
         document.dispatchEvent(new Event('hudsonos:soundchange'));
@@ -61,6 +74,7 @@ export default {
       }
     });
 
+    root.querySelector('#set-ach').addEventListener('click', () => openApp('achievements'));
     root.querySelector('#set-reset').addEventListener('click', () => {
       if (!confirm('Reset HudsonOS to factory settings?')) return;
       store.clear();

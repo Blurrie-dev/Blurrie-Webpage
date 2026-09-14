@@ -2,9 +2,11 @@
 
 import { sfx } from '../sfx.js';
 import { closeAll } from '../wm.js';
+import { unlock } from '../achievements.js';
 
 export function shutdown() {
   sfx.play('shutdown');
+  unlock('shutdown');
   closeAll();
   const el = document.createElement('div');
   el.className = 'shutdown';

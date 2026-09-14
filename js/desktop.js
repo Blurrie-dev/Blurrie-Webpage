@@ -1,23 +1,27 @@
 // Desktop icons, selection, and the right-click context menu.
 
-import { apps } from './apps/registry.js';
+import { apps, isVisible } from './apps/registry.js';
 import { openApp, closeAll } from './wm.js';
 import { cycleTheme } from './theme.js';
 import { sfx } from './sfx.js';
 import { esc, toast, onClickOutside, isCoarsePointer } from './ui.js';
+
+let rerender = null;
+export const refreshDesktop = () => rerender?.();
 
 export function initDesktop() {
   const desktop = document.getElementById('desktop');
   const iconsEl = document.getElementById('icons');
 
   const renderIcons = () => {
-    iconsEl.innerHTML = apps.filter((a) => a.desktop !== false).map((a) => `
+    iconsEl.innerHTML = apps.filter((a) => a.desktop !== false && isVisible(a)).map((a) => `
       <button class="icon" role="listitem" data-app="${esc(a.id)}" title="${esc(a.title)}">
         <span class="icon-img" aria-hidden="true">${esc(a.icon)}</span>
         <span class="icon-label">${esc(a.title)}</span>
       </button>`).join('');
   };
   renderIcons();
+  rerender = renderIcons;
 
   const select = (btn) => {
     iconsEl.querySelectorAll('.icon.selected').forEach((i) => i.classList.remove('selected'));

@@ -24,13 +24,14 @@ export default {
     root.innerHTML = `
       <div class="sysinfo">
         <div class="sysinfo-logo" aria-hidden="true">💾</div>
-        <h2 style="text-align:center">HudsonOS <span class="muted">v0.1.0</span></h2>
+        <h2 style="text-align:center">HudsonOS <span class="muted">v0.4.0</span></h2>
         <dl>
           <dt>Built with</dt><dd>HTML, CSS, JavaScript. No frameworks.</dd>
           <dt>Theme</dt><dd id="si-theme">${esc(currentTheme())}</dd>
           <dt>Viewport</dt><dd id="si-vp">${innerWidth}×${innerHeight}</dd>
           <dt>Uptime</dt><dd id="si-up">${uptime()}</dd>
           <dt>Licence</dt><dd>Hobby project. Be nice.</dd>
+          <dt>Secrets</dt><dd>At least one. ↑↑↓↓←→←→BA</dd>
         </dl>
         <div style="text-align:center"><button class="btn" id="si-ok">OK</button></div>
       </div>`;

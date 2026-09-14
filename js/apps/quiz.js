@@ -3,6 +3,7 @@
 
 import { loadData } from '../data.js';
 import { esc } from '../ui.js';
+import { unlock } from '../achievements.js';
 
 const shuffle = (arr) => arr.map((v) => [Math.random(), v]).sort((a, b) => a[0] - b[0]).map((x) => x[1]);
 
@@ -100,6 +101,8 @@ function mountQuiz(panel, data, ctx) {
 
   const result = () => {
     const tier = tiers.filter((t) => score >= t.min).pop() || { label: 'Unranked', icon: '❔', blurb: '' };
+    unlock('quiz-done');
+    if (score === questions.length && questions.length) unlock('quiz-perfect');
     const prev = ctx.store.get('quiz:best', null);
     if (!prev || score > prev.score) ctx.store.set('quiz:best', { score, total: questions.length, tier: tier.label });
     const share = `I scored ${score}/${questions.length} on "How well do you know Hudson?" — ${tier.label} tier. ${location.origin}${location.pathname}#quiz`;

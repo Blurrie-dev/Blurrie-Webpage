@@ -1,6 +1,6 @@
 // Start menu: lists every app plus Shut Down.
 
-import { apps } from './apps/registry.js';
+import { apps, isVisible } from './apps/registry.js';
 import { openApp } from './wm.js';
 import { sfx } from './sfx.js';
 import { esc, onClickOutside } from './ui.js';
@@ -16,8 +16,8 @@ export function initStartMenu() {
   loadData('profile').then((p) => { profile = p; }).catch(() => {});
 
   const render = () => {
-    const items = apps.filter((a) => a.start !== false);
-    const tiles = apps.filter((a) => a.desktop !== false);
+    const items = apps.filter((a) => a.start !== false && isVisible(a));
+    const tiles = apps.filter((a) => a.desktop !== false && isVisible(a));
     menu.innerHTML = `
       <div class="startmenu-head">
         <span class="sm-avatar" aria-hidden="true">${profile.avatar ? `<img src="${esc(profile.avatar)}" alt="" onerror="this.replaceWith('🧑‍💻')">` : '🧑‍💻'}</span>

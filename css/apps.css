@@ -399,3 +399,84 @@
 .take-card span, .fact-card span { font-size: 26px; line-height: 1; }
 .take-card p, .fact-card p { margin: 0; }
 .fact-card.pop { animation: slide-up .25s ease-out; }
+
+/* ---------- Terminal ---------- */
+.term {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #0c0c0c;
+  color: #cccccc;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.45;
+  cursor: text;
+}
+.term-out { flex: 1; min-height: 0; overflow: auto; padding: 10px 12px 4px; }
+.term-row { white-space: pre-wrap; word-break: break-word; }
+.term-row.term-pre { white-space: pre; }
+.term-row.term-echo { color: #ffffff; }
+.term-row.term-err { color: #f14c4c; }
+.term-row.muted { color: #6f6f6f; }
+.term-row a { color: #3b8eea; }
+.term-row b { color: #ffffff; }
+.term-prompt { color: #16c60c; }
+.term-file { color: #3b8eea; }
+.term-logo { color: #61d6d6; }
+.term-swatch i { display: inline-block; width: 22px; height: 12px; margin-right: 2px; }
+.term-line { flex: none; display: flex; gap: 8px; padding: 2px 12px 10px; }
+.term-in {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  color: #ffffff;
+  font: inherit;
+  caret-color: #ffffff;
+  outline: none;
+}
+
+/* ---------- Snake ---------- */
+.snake { display: flex; flex-direction: column; align-items: center; height: 100%; background: #0b1220; color: #7cf5c8; }
+.snake-hud { display: flex; gap: 18px; padding: 8px 12px; font-size: 12px; width: 100%; justify-content: center; flex-wrap: wrap; }
+.snake-hud b { color: #ffffff; }
+.snake-board { flex: 1; min-height: 0; width: 100%; display: grid; place-items: center; padding: 0 10px; }
+.snake-board canvas { max-width: 100%; max-height: 100%; aspect-ratio: 1; height: auto; width: auto; image-rendering: pixelated; border: 2px solid #1f2b45; }
+.snake-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  grid-template-areas: ". up ." "left down right";
+  gap: 4px;
+  padding: 8px;
+}
+.snake-pad button { width: 44px; height: 36px; background: #1f2b45; color: #fff; border: 0; border-radius: 4px; font-size: 14px; }
+.snake-pad button:active { background: #7cf5c8; color: #0b1220; }
+.snake-pad [data-dir="ArrowUp"] { grid-area: up; }
+.snake-pad [data-dir="ArrowLeft"] { grid-area: left; }
+.snake-pad [data-dir="ArrowDown"] { grid-area: down; }
+.snake-pad [data-dir="ArrowRight"] { grid-area: right; }
+@media (pointer: fine) { .snake-pad { display: none; } }
+
+/* ---------- Achievements ---------- */
+.ach-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 14px; }
+.ach-head h2 { margin-bottom: 2px; }
+.ach-bar { flex: 1 0 140px; height: 8px; background: var(--face); box-shadow: var(--bevel-in); }
+.ach-bar div { height: 100%; background: var(--accent); transition: width .4s; }
+.ach-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.ach-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: var(--face);
+  color: var(--text);
+  box-shadow: var(--bevel-out);
+  min-height: 108px;
+}
+.ach-card.locked { opacity: .55; filter: grayscale(1); }
+.ach-icon { font-size: 26px; line-height: 1; }
+.ach-card b { font-size: 13px; }
+.ach-card small { color: var(--text-muted); line-height: 1.3; }
+[data-theme="fluent"] .ach-card { box-shadow: none; border: 1px solid #e0e0e0; }
