@@ -1,6 +1,7 @@
 /* Reset + shared primitives. Theme colours live in themes.css. */
 
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html, body {
   height: 100%;

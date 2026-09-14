@@ -12,17 +12,20 @@ The visitor lands on a boot screen, then a desktop. Everything about you is an
 terminal, and stumble onto easter eggs. The site rewards exploration — the
 "get-to-know-me" content is spread across apps so poking around *is* the fun.
 
-**Tone:** Windows XP. Bliss wallpaper, glossy blue title bars, the green
-"start" button — with modern polish (smooth animations, crisp fonts, responsive).
+**Tone:** Windows 10. Dark taskbar, flat white windows with a thin accent
+border, a Start menu with live tiles, the "hero" light-beam wallpaper. Clean
+enough to read as a real portfolio; still unmistakably an OS.
 
 **Design language**
-- Theme system via CSS variables. Default is *Luna* (XP); alternates are
-  *Classic* (Win95 beige + bevels) and *Midnight* (dark, neon accents). Theme
-  picker lives in Settings; choice persists in `localStorage`.
-- Luna chrome: 3px blue window frame, rounded title bar with red close button,
-  Tahoma UI text, Trebuchet titles, blue taskbar with a light-blue tray.
-- Wallpaper: the real Bliss photo at `assets/wallpapers/bliss.jpg`, with an
-  inline-SVG approximation as fallback.
+- Theme system via CSS variables. Default is *Fluent* (Windows 10); alternates
+  are *Luna* (XP), *Classic* (Win95) and *Midnight* (dark neon). Theme picker
+  lives in Settings; choice persists in `localStorage`.
+- Fluent chrome: Segoe UI, 32px white title bar with wide flat controls (close
+  turns red on hover), 1px accent border on the active window, dark
+  translucent taskbar with the white logo and an accent underline on the
+  active task, stacked time/date clock.
+- Wallpapers: optional photos at `assets/wallpapers/win10.jpg` / `bliss.jpg`,
+  each with an inline-SVG approximation as fallback.
 - A single accent colour per theme for highlights, selection, and the taskbar
   clock.
 - Sound design (optional, muted by default): startup chime, window open/close

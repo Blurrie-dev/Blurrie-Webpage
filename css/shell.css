@@ -90,6 +90,7 @@
   touch-action: none;
 }
 .window:not(.active) .titlebar { background: var(--title-inactive-bg); color: var(--title-inactive-fg); }
+.window:not(.active) { box-shadow: var(--bevel-out), var(--win-shadow-inactive, var(--win-shadow)); }
 .titlebar-icon { font-size: 14px; line-height: 1; }
 .titlebar-title { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .titlebar-controls { display: flex; gap: 2px; }
@@ -234,6 +235,7 @@
 }
 .status-dot.online { background: #23a55a; box-shadow: 0 0 6px #23a55a; }
 .clock { min-width: 42px; text-align: center; font-variant-numeric: tabular-nums; }
+.clock-date { display: none; }
 
 /* ---------- Start menu ---------- */
 .startmenu {
@@ -269,6 +271,8 @@
   overflow: hidden;
 }
 .sm-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.startmenu-main { display: flex; flex-direction: column; min-height: 0; }
+.startmenu-tiles { display: none; }
 .startmenu-list { list-style: none; margin: 0; padding: 3px; }
 .startmenu-list li {
   display: flex;

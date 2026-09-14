@@ -6,6 +6,7 @@ import { store } from '../store.js';
 import { esc } from '../ui.js';
 
 const SWATCH = {
+  fluent: 'linear-gradient(90deg, #072047 50%, #0078d7 50%)',
   luna: 'linear-gradient(90deg, #245edb 50%, #3ea33b 50%)',
   classic: 'linear-gradient(90deg, #008080 50%, #c0c0c0 50%)',
   midnight: 'linear-gradient(90deg, #0a0d16 50%, #7c5cff 50%)',

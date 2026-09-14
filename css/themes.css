@@ -1,11 +1,202 @@
 /*
   Theme variable sets. Every colour, radius and bevel the shell uses is defined
-  here so a new theme is just another [data-theme] block. Luna (Windows XP) is
-  the default; Classic (Win95) and Midnight (dark neon) are alternates.
+  here so a new theme is just another [data-theme] block. Fluent (Windows 10) is
+  the default; Luna (XP), Classic (Win95) and Midnight (dark neon) are alternates.
 */
 
-/* ---------- Luna (Windows XP) — default ---------- */
-:root, [data-theme="luna"] {
+/* ---------- Fluent (Windows 10) — default ---------- */
+:root, [data-theme="fluent"] {
+  --font-ui: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-title: var(--font-ui);
+  --font-mono: "Cascadia Mono", "Consolas", monospace;
+
+  /* Windows 10 "hero" style wallpaper. Drop a real one at assets/wallpapers/win10.jpg;
+     until then the inline-SVG light-beam logo underneath shows through. */
+  --desktop-bg: #072047;
+  --desktop-image: url("../assets/wallpapers/win10.jpg"), url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' preserveAspectRatio='xMidYMid slice'><defs><radialGradient id='bg' cx='42%25' cy='52%25' r='75%25'><stop offset='0' stop-color='%231b4d95'/><stop offset='.55' stop-color='%23082455'/><stop offset='1' stop-color='%23020a1e'/></radialGradient><linearGradient id='ray' x1='1' y1='0' x2='0' y2='0'><stop offset='0' stop-color='%23d6f0ff' stop-opacity='.9'/><stop offset='.35' stop-color='%2366b8ff' stop-opacity='.35'/><stop offset='1' stop-color='%23113a7a' stop-opacity='0'/></linearGradient><linearGradient id='pane' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffffff'/><stop offset='1' stop-color='%23a9dcff'/></linearGradient><filter id='glow' x='-30%25' y='-30%25' width='160%25' height='160%25'><feGaussianBlur stdDeviation='18'/></filter></defs><rect width='1600' height='900' fill='url(%23bg)'/><g opacity='.75'><polygon points='700,330 40,250 40,410 700,410' fill='url(%23ray)'/><polygon points='700,430 40,470 40,640 700,510' fill='url(%23ray)'/><polygon points='860,330 40,150 40,330 860,410' fill='url(%23ray)' opacity='.5'/><polygon points='860,430 40,600 40,780 860,510' fill='url(%23ray)' opacity='.5'/></g><g filter='url(%23glow)' opacity='.9'><rect x='700' y='320' width='150' height='100' fill='%23bfe4ff'/><rect x='866' y='320' width='150' height='100' fill='%23bfe4ff'/><rect x='700' y='436' width='150' height='100' fill='%23bfe4ff'/><rect x='866' y='436' width='150' height='100' fill='%23bfe4ff'/></g><g><polygon points='700,320 850,326 850,420 700,428' fill='url(%23pane)'/><polygon points='866,327 1016,333 1016,414 866,420' fill='url(%23pane)'/><polygon points='700,444 850,436 850,530 700,540' fill='url(%23pane)'/><polygon points='866,436 1016,428 1016,510 866,520' fill='url(%23pane)'/></g></svg>");
+
+  --face: #f2f2f2;
+  --face-light: #ffffff;
+  --face-dark: #cccccc;
+  --face-darker: #999999;
+
+  --text: #000000;
+  --text-muted: #6d6d6d;
+  --link: #0067c0;
+
+  --accent: #0078d7;
+  --accent-fg: #ffffff;
+
+  --win-bg: #ffffff;
+  --win-bg-inactive: #ffffff;
+  --win-pad: 0px;
+  --win-shadow: 0 0 0 1px var(--accent), 0 10px 32px rgba(0, 0, 0, .38);
+  --win-shadow-inactive: 0 0 0 1px #aaaaaa, 0 4px 16px rgba(0, 0, 0, .22);
+  --content-bg: #ffffff;
+  --content-fg: #000000;
+
+  --title-bg: #ffffff;
+  --title-fg: #000000;
+  --title-inactive-bg: #ffffff;
+  --title-inactive-fg: #999999;
+  --titlebar-h: 32px;
+
+  --taskbar-h: 40px;
+  --taskbar-bg: rgba(16, 16, 16, .93);
+  --taskbar-shadow: none;
+  --task-active-pattern: none;
+
+  --icon-fg: #ffffff;
+  --icon-shadow: rgba(0, 0, 0, .85);
+
+  --radius: 0px;
+  --ctl-radius: 0px;
+
+  --bevel-out: 0 0 0 1px #adadad;
+  --bevel-in:  inset 0 0 0 1px #d9d9d9;
+}
+
+/* =====================================================================
+   Fluent structural overrides
+   ===================================================================== */
+
+/* Windows: flat, thin accent border, white title bar, wide flat controls */
+[data-theme="fluent"] .window { box-shadow: var(--win-shadow); animation: fade-in .12s; }
+[data-theme="fluent"] .window:not(.active) { box-shadow: var(--win-shadow-inactive); }
+[data-theme="fluent"] .titlebar { padding: 0 0 0 10px; gap: 10px; font-weight: normal; font-size: 12px; }
+[data-theme="fluent"] .titlebar-icon { font-size: 15px; }
+[data-theme="fluent"] .titlebar-controls { gap: 0; align-self: stretch; }
+[data-theme="fluent"] .tb-btn { width: 46px; height: 100%; background: none; border: 0; box-shadow: none; color: currentColor; }
+[data-theme="fluent"] .tb-btn:hover { background: rgba(0, 0, 0, .09); }
+[data-theme="fluent"] .tb-btn:active { background: rgba(0, 0, 0, .18); box-shadow: none; }
+[data-theme="fluent"] .tb-btn[data-action="close"]:hover { background: #e81123; color: #ffffff; }
+[data-theme="fluent"] .tb-btn svg [stroke] { stroke-width: 1.1; }
+[data-theme="fluent"] .tb-btn svg [fill="currentColor"] { height: 1.2px; }
+[data-theme="fluent"] .window-body { margin: 0; box-shadow: none; border-top: 1px solid #e5e5e5; }
+[data-theme="fluent"] .statusbar { margin: 0; padding: 3px 10px; background: #f7f7f7; border-top: 1px solid #e5e5e5; box-shadow: none; }
+[data-theme="fluent"] .resize-handle { background: none; }
+
+/* Taskbar: dark, logo-only start button, underline for the active task, stacked clock */
+[data-theme="fluent"] .taskbar { padding: 0; gap: 0; color: #ffffff; backdrop-filter: blur(24px); }
+[data-theme="fluent"] .taskbar-sep { display: none; }
+[data-theme="fluent"] .start-btn { width: 48px; padding: 0; justify-content: center; background: none; box-shadow: none; border-radius: 0; color: #fff; }
+[data-theme="fluent"] .start-btn .start-text { display: none; }
+[data-theme="fluent"] .start-btn:hover { background: rgba(255, 255, 255, .1); }
+[data-theme="fluent"] .start-btn:hover .start-logo i { background: var(--accent); }
+[data-theme="fluent"] .start-btn.open, [data-theme="fluent"] .start-btn:active { background: rgba(255, 255, 255, .16); box-shadow: none; }
+[data-theme="fluent"] .start-logo { width: 17px; height: 17px; gap: 2px; }
+[data-theme="fluent"] .start-logo i { background: #ffffff; border-radius: 0; box-shadow: none; transition: background .15s; }
+[data-theme="fluent"] .tasks { gap: 0; padding: 0; }
+[data-theme="fluent"] .task-btn {
+  flex: 0 1 172px;
+  padding: 0 12px;
+  color: #ffffff;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, .35);
+  font-size: 12px;
+}
+[data-theme="fluent"] .task-btn:hover { background: rgba(255, 255, 255, .1); }
+[data-theme="fluent"] .task-btn.active { background: rgba(255, 255, 255, .15); border-bottom-color: var(--accent); font-weight: normal; box-shadow: none; }
+[data-theme="fluent"] .tray { padding: 0 14px 0 10px; gap: 12px; box-shadow: none; border-radius: 0; }
+[data-theme="fluent"] .tray-btn { padding: 0 4px; height: 100%; border-radius: 0; }
+[data-theme="fluent"] .tray-btn:hover { background: rgba(255, 255, 255, .1); }
+[data-theme="fluent"] .clock { display: flex; flex-direction: column; justify-content: center; line-height: 1.25; font-size: 12px; min-width: 0; padding: 0 6px; height: 100%; }
+[data-theme="fluent"] .clock:hover { background: rgba(255, 255, 255, .1); }
+[data-theme="fluent"] .clock-date { display: block; }
+
+/* Start menu: dark panel, app list on the left, tiles on the right, user + power along the bottom */
+[data-theme="fluent"] .startmenu {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  width: 600px;
+  max-width: 100vw;
+  height: 540px;
+  max-height: calc(100vh - var(--taskbar-h));
+  min-width: 0;
+  background: rgba(28, 28, 28, .96);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-bottom: 0;
+  border-radius: 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .55);
+  backdrop-filter: blur(30px);
+}
+[data-theme="fluent"] .startmenu-main { grid-column: 1 / -1; display: flex; flex-direction: row; min-height: 0; }
+[data-theme="fluent"] .startmenu-list { width: 230px; flex: none; overflow: auto; padding: 10px 0; }
+[data-theme="fluent"] .startmenu-list li { padding: 9px 14px; gap: 14px; font-size: 13px; }
+[data-theme="fluent"] .startmenu-list li:hover, [data-theme="fluent"] .startmenu-list li:focus { background: rgba(255, 255, 255, .1); color: #ffffff; }
+[data-theme="fluent"] .startmenu-list .mi-icon { font-size: 16px; }
+[data-theme="fluent"] .startmenu-tiles {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-auto-rows: 100px;
+  gap: 4px;
+  padding: 14px 16px;
+  align-content: start;
+  overflow: auto;
+}
+[data-theme="fluent"] .startmenu-head { grid-row: 2; grid-column: 1; padding: 10px 14px; background: rgba(0, 0, 0, .25); }
+[data-theme="fluent"] .sm-avatar { width: 32px; height: 32px; font-size: 20px; border: 0; border-radius: 50%; box-shadow: none; }
+[data-theme="fluent"] .startmenu-foot { grid-row: 2; grid-column: 2; padding: 10px 14px; background: rgba(0, 0, 0, .25); }
+[data-theme="fluent"] .startmenu-foot button { color: #ffffff; font-weight: normal; }
+[data-theme="fluent"] .startmenu-foot button:hover { background: rgba(255, 255, 255, .1); }
+[data-theme="fluent"] .startmenu-foot .foot-label { display: none; }
+[data-theme="fluent"] .off-icon { background: none; box-shadow: none; font-size: 16px; }
+
+/* Tiles are shared markup; only Fluent shows them */
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 8px;
+  border: 0;
+  color: #ffffff;
+  background: var(--tile, var(--accent));
+  text-align: left;
+  position: relative;
+  transition: filter .12s, transform .12s;
+}
+.tile:hover { filter: brightness(1.12); }
+.tile:active { transform: scale(.97); }
+.tile:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+.tile-icon { position: absolute; inset: 0; display: grid; place-items: center; font-size: 34px; padding-bottom: 16px; }
+.tile-label { font-size: 11px; position: relative; }
+.tile-c0 { --tile: #0078d7; }
+.tile-c1 { --tile: #038387; }
+.tile-c2 { --tile: #10893e; }
+.tile-c3 { --tile: #744da9; }
+.tile-c4 { --tile: #ca5010; }
+.tile-c5 { --tile: #c50f1f; }
+.tile-c6 { --tile: #486860; }
+.tile-c7 { --tile: #0063b1; }
+
+/* Flat controls and menus */
+[data-theme="fluent"] .btn { background: #e1e1e1; border: 1px solid #adadad; box-shadow: none; padding: 5px 16px; }
+[data-theme="fluent"] .btn:hover { background: #e5f1fb; border-color: var(--accent); }
+[data-theme="fluent"] .btn:active, [data-theme="fluent"] .btn.pressed { background: #cce4f7; border-color: #005499; box-shadow: none; }
+[data-theme="fluent"] input[type="text"], [data-theme="fluent"] textarea { border: 1px solid #7a7a7a; box-shadow: none; }
+[data-theme="fluent"] .fieldset { border: 1px solid #dcdcdc; box-shadow: none; }
+[data-theme="fluent"] .ctxmenu { padding: 4px 0; background: #f2f2f2; border: 1px solid #cccccc; box-shadow: 0 6px 16px rgba(0, 0, 0, .25); }
+[data-theme="fluent"] .ctxmenu button { padding: 7px 28px 7px 28px; }
+[data-theme="fluent"] .ctxmenu button:hover { background: #dcdcdc; color: #000; }
+[data-theme="fluent"] .ctxmenu .sep { border-top: 1px solid #cccccc; box-shadow: none; }
+[data-theme="fluent"] .toast { background: #1f1f1f; color: #fff; border-left: 3px solid var(--accent); box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
+[data-theme="fluent"] .stat, [data-theme="fluent"] .roles li, [data-theme="fluent"] .social, [data-theme="fluent"] .tag, [data-theme="fluent"] .app-stub .phase, [data-theme="fluent"] .take-card, [data-theme="fluent"] .fact-card { box-shadow: none; border: 1px solid #e0e0e0; }
+[data-theme="fluent"] .tab-strip [role="tab"] { border: 0; background: none; padding: 6px 12px; }
+[data-theme="fluent"] .tab-strip [role="tab"][aria-selected="true"] { box-shadow: inset 0 -2px 0 var(--accent); top: 0; background: none; }
+[data-theme="fluent"] .tab-panel { border: 1px solid #e5e5e5; }
+[data-theme="fluent"] .shutdown { color: #ffffff; font-family: var(--font-ui); background: #0078d7; }
+[data-theme="fluent"] .shutdown button { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.5); color: #fff; }
+
+/* ---------- Luna (Windows XP) ---------- */
+[data-theme="luna"] {
   --font-ui: "Tahoma", "Segoe UI", system-ui, sans-serif;
   --font-title: "Trebuchet MS", "Tahoma", sans-serif;
   --font-mono: "Lucida Console", "Cascadia Mono", "Consolas", monospace;

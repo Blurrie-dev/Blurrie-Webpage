@@ -17,16 +17,22 @@ export function initStartMenu() {
 
   const render = () => {
     const items = apps.filter((a) => a.start !== false);
+    const tiles = apps.filter((a) => a.desktop !== false);
     menu.innerHTML = `
       <div class="startmenu-head">
         <span class="sm-avatar" aria-hidden="true">${profile.avatar ? `<img src="${esc(profile.avatar)}" alt="" onerror="this.replaceWith('🧑‍💻')">` : '🧑‍💻'}</span>
         <span>${esc(profile.name)}</span>
       </div>
-      <ul class="startmenu-list" role="menu">
-        ${items.map((a) => `<li role="menuitem" tabindex="0" data-app="${esc(a.id)}"><span class="mi-icon" aria-hidden="true">${esc(a.icon)}</span>${esc(a.title)}</li>`).join('')}
-      </ul>
+      <div class="startmenu-main">
+        <ul class="startmenu-list" role="menu">
+          ${items.map((a) => `<li role="menuitem" tabindex="0" data-app="${esc(a.id)}"><span class="mi-icon" aria-hidden="true">${esc(a.icon)}</span>${esc(a.title)}</li>`).join('')}
+        </ul>
+        <div class="startmenu-tiles" role="menu" aria-label="Pinned">
+          ${tiles.map((a, i) => `<button role="menuitem" class="tile tile-c${i % 8}" data-app="${esc(a.id)}"><span class="tile-icon" aria-hidden="true">${esc(a.icon)}</span><span class="tile-label">${esc(a.title)}</span></button>`).join('')}
+        </div>
+      </div>
       <div class="startmenu-foot">
-        <button role="menuitem" data-action="shutdown"><span class="off-icon" aria-hidden="true">⏻</span>Turn Off Computer</button>
+        <button role="menuitem" data-action="shutdown" title="Shut down"><span class="off-icon" aria-hidden="true">⏻</span><span class="foot-label">Turn Off Computer</span></button>
       </div>`;
   };
 

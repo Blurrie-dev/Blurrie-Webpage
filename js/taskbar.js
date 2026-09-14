@@ -5,13 +5,13 @@ import { cycleTheme, THEMES, currentTheme, themeEvents } from './theme.js';
 import { sfx } from './sfx.js';
 import { toast, esc } from './ui.js';
 
-const THEME_ICON = { luna: '🌄', classic: '🎨', midnight: '🌙' };
+const THEME_ICON = { fluent: '🪟', luna: '🌄', classic: '🎨', midnight: '🌙' };
 
 export function initTaskbar() {
   const bar = document.getElementById('taskbar');
   bar.innerHTML = `
     <button class="start-btn" id="start-btn" aria-haspopup="menu" aria-expanded="false">
-      <span class="start-logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Start
+      <span class="start-logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="start-text">Start</span>
     </button>
     <div class="taskbar-sep"></div>
     <div class="tasks" id="tasks" role="list"></div>
@@ -19,7 +19,7 @@ export function initTaskbar() {
       <button class="tray-btn" id="tray-theme" title="Switch theme"></button>
       <button class="tray-btn" id="tray-sound" title="Toggle sounds"></button>
       <span class="status-dot" id="tray-status" title="Discord status (coming in Phase 5)"></span>
-      <span class="clock" id="clock"></span>
+      <span class="clock" id="clock"><span class="clock-time" id="clock-time"></span><span class="clock-date" id="clock-date"></span></span>
     </div>`;
 
   const tasks = bar.querySelector('#tasks');
@@ -71,9 +71,12 @@ export function initTaskbar() {
 
   // Clock
   const clock = bar.querySelector('#clock');
+  const clockTime = bar.querySelector('#clock-time');
+  const clockDate = bar.querySelector('#clock-date');
   const tick = () => {
     const now = new Date();
-    clock.textContent = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    clockTime.textContent = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    clockDate.textContent = now.toLocaleDateString([], { year: 'numeric', month: 'numeric', day: 'numeric' });
     clock.title = now.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   };
   tick();

@@ -1,1 +1,4 @@
-Put the Windows XP Bliss photo here as `bliss.jpg` (any resolution, JPG). The Luna theme picks it up automatically.
+Optional wallpaper photos; each theme falls back to an inline SVG if its file is missing.
+
+- `win10.jpg` — Fluent (Windows 10) theme
+- `bliss.jpg` — Luna (Windows XP) theme
