@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="luna">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HudsonOS</title>
+  <meta name="description" content="Hudson's personal website, disguised as a retro operating system. Open the apps to get to know me.">
+  <meta property="og:title" content="HudsonOS">
+  <meta property="og:description" content="A personal website disguised as a retro desktop. Poke around.">
+  <!-- Apply the saved theme before first paint to avoid a flash of the wrong colours -->
+  <script>
+    try { var t = localStorage.getItem('hudsonos:theme'); if (t) document.documentElement.dataset.theme = JSON.parse(t); } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/apps.css">
+</head>
+<body>
+  <!-- Fake BIOS boot log; shown once per session -->
+  <div id="boot" class="boot" hidden>
+    <pre id="boot-log" class="boot-log"></pre>
+    <div class="boot-hint">press any key to skip</div>
+  </div>
+
+  <!-- The desktop: icons underneath, windows on top -->
+  <main id="desktop" class="desktop">
+    <div id="icons" class="icons" role="list" aria-label="Desktop icons"></div>
+    <div id="windows" class="windows"></div>
+  </main>
+
+  <nav id="startmenu" class="startmenu" hidden aria-label="Start menu"></nav>
+  <div id="ctxmenu" class="ctxmenu" hidden role="menu"></div>
+
+  <footer id="taskbar" class="taskbar"></footer>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <!-- Window chrome; cloned by the window manager for every open app -->
+  <template id="tpl-window">
+    <section class="window" role="dialog">
+      <header class="titlebar">
+        <span class="titlebar-icon" aria-hidden="true"></span>
+        <span class="titlebar-title"></span>
+        <span class="titlebar-controls">
+          <button class="tb-btn" data-action="minimize" aria-label="Minimise" title="Minimise">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1" y="7" width="6" height="2" fill="currentColor"/></svg>
+          </button>
+          <button class="tb-btn" data-action="maximize" aria-label="Maximise" title="Maximise">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="1" width="8" height="2.2" fill="currentColor"/></svg>
+          </button>
+          <button class="tb-btn" data-action="close" aria-label="Close" title="Close">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 2l6 6M8 2l-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+        </span>
+      </header>
+      <div class="window-body"></div>
+      <footer class="statusbar" hidden></footer>
+      <div class="resize-handle" aria-hidden="true"></div>
+    </section>
+  </template>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

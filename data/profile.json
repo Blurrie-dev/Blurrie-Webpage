@@ -1,0 +1,63 @@
+{
+  "name": "Hudson Lin",
+  "tagline": "Veteran Gamer, All-Time Nerd, and Lover of Cats.",
+  "roles": [
+    {
+      "icon": "🎓",
+      "title": "Human Biology & Pharmacology",
+      "detail": "3rd year, University of Toronto"
+    },
+    {
+      "icon": "💻",
+      "title": "Full-Stack Developer",
+      "detail": "WebApps E2E, K8s, LMS Dev"
+    },
+    {
+      "icon": "📈",
+      "title": "Finance Analyst",
+      "detail": "Sales Forecast, Algorithmic Projections, Week Trader"
+    }
+  ],
+  "avatar": "assets/images/avatar.png",
+  "bio": [
+    "Hi, I'm Hudson! Welcome to my site!",
+    "Poke around! Find out more about me!"
+  ],
+  "location": "Toronto, Canada",
+  "timezone": "America/Toronto",
+  "codingSince": 2015,
+  "currently": {
+    "playing": "(your current game)",
+    "listening": "(your current album)",
+    "building": "this website",
+    "reading": ""
+  },
+  "contactBlurb": "Find me around the internet. Discord is fastest.",
+  "socials": [
+    {
+      "id": "discord",
+      "label": "Discord",
+      "handle": "_blurrie_",
+      "copy": "_blurrie_",
+      "url": "https://discord.com/users/558039007917899788"
+    },
+    {
+      "id": "steam",
+      "label": "Steam",
+      "handle": "steamcommunity.com/profiles/76561198965734883",
+      "url": "https://steamcommunity.com/profiles/76561198965734883"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "handle": "@Blurrie-dev",
+      "url": "https://github.com/Blurrie-dev"
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "handle": "hudsonlindev@gmail.com",
+      "url": "mailto:hudsonlindev@gmail.com"
+    }
+  ]
+}

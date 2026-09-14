@@ -1,0 +1,64 @@
+[
+  {
+    "id": "hudsonos",
+    "name": "HudsonOS",
+    "icon": "💾",
+    "year": 2026,
+    "status": "active",
+    "tagline": "This website. A personal site disguised as a Windows XP desktop.",
+    "description": [
+      "A window manager, taskbar, start menu, boot screen and theme engine written from scratch in vanilla JavaScript — no frameworks, no build step.",
+      "Every app on the desktop is a small module that renders from JSON, so the whole site is content-editable without touching code."
+    ],
+    "tech": ["JavaScript", "CSS", "HTML", "Web Audio"],
+    "repo": "Blurrie-dev/hudson-website",
+    "links": [
+      { "label": "Source", "url": "https://github.com/Blurrie-dev" }
+    ]
+  },
+  {
+    "id": "sample-webapp",
+    "name": "Sample Web App",
+    "icon": "🌐",
+    "year": 2025,
+    "status": "shipped",
+    "tagline": "Sample project — replace me. One line on what it does and for whom.",
+    "description": [
+      "Two or three sentences: the problem, what you built, and what happened after. Mention anything you're proud of or would do differently."
+    ],
+    "tech": ["React", "Node.js", "PostgreSQL"],
+    "repo": "",
+    "links": [
+      { "label": "Live site", "url": "https://example.com" },
+      { "label": "Source", "url": "https://github.com/Blurrie-dev" }
+    ]
+  },
+  {
+    "id": "sample-finance",
+    "name": "Sample Finance Tool",
+    "icon": "📈",
+    "year": 2025,
+    "status": "shipped",
+    "tagline": "Sample project — replace me. Something from the finance analyst side?",
+    "description": [
+      "A model, a dashboard, an automation script — anything that shows the analyst work in a concrete way."
+    ],
+    "tech": ["Python", "pandas", "Excel"],
+    "repo": "",
+    "links": []
+  },
+  {
+    "id": "sample-bio",
+    "name": "Sample Bio Project",
+    "icon": "🧬",
+    "year": 2024,
+    "status": "archived",
+    "tagline": "Sample project — replace me. Coursework or research from Human Biology & Pharmacology?",
+    "description": [
+      "Cross-disciplinary projects are the interesting ones. A data analysis, a lab tool, a visualisation."
+    ],
+    "tech": ["R", "Python"],
+    "repo": "",
+    "links": []
+  }
+]

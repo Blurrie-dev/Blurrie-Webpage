@@ -1,0 +1,307 @@
+/*
+  Theme variable sets. Every colour, radius and bevel the shell uses is defined
+  here so a new theme is just another [data-theme] block. Luna (Windows XP) is
+  the default; Classic (Win95) and Midnight (dark neon) are alternates.
+*/
+
+/* ---------- Luna (Windows XP) — default ---------- */
+:root, [data-theme="luna"] {
+  --font-ui: "Tahoma", "Segoe UI", system-ui, sans-serif;
+  --font-title: "Trebuchet MS", "Tahoma", sans-serif;
+  --font-mono: "Lucida Console", "Cascadia Mono", "Consolas", monospace;
+
+  /* Bliss. Drop the real photo at assets/wallpapers/bliss.jpg; until then the
+     inline-SVG approximation underneath shows through. */
+  --desktop-bg: #3a6ea5;
+  --desktop-image: url("../assets/wallpapers/bliss.jpg"), url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' preserveAspectRatio='xMidYMid slice'><defs><linearGradient id='s' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%231f5fcf'/><stop offset='.45' stop-color='%236aa9ef'/><stop offset='.72' stop-color='%23b9dcf7'/></linearGradient><linearGradient id='h1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%2394d23f'/><stop offset='1' stop-color='%23347f17'/></linearGradient><linearGradient id='h2' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%2372b82e'/><stop offset='1' stop-color='%23276512'/></linearGradient></defs><rect width='1600' height='900' fill='url(%23s)'/><g fill='%23fff' opacity='.55'><ellipse cx='260' cy='150' rx='150' ry='38'/><ellipse cx='330' cy='125' rx='90' ry='34'/><ellipse cx='1180' cy='210' rx='190' ry='40'/><ellipse cx='1260' cy='180' rx='100' ry='36'/><ellipse cx='760' cy='90' rx='110' ry='28'/></g><path d='M0 640 C 250 560 520 600 820 540 S 1350 500 1600 580 L1600 900 L0 900 Z' fill='url(%23h2)'/><path d='M0 720 C 300 640 650 690 950 620 S 1450 590 1600 660 L1600 900 L0 900 Z' fill='url(%23h1)'/></svg>");
+
+  --face: #ece9d8;
+  --face-light: #ffffff;
+  --face-dark: #aca899;
+  --face-darker: #716f64;
+
+  --text: #000000;
+  --text-muted: #6d6a5e;
+  --link: #0046d5;
+
+  --accent: #316ac5;
+  --accent-fg: #ffffff;
+
+  --win-bg: #0855dd;
+  --win-bg-inactive: #7a96df;
+  --win-pad: 0px;
+  --win-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  --content-bg: #ffffff;
+  --content-fg: #000000;
+
+  --title-bg: linear-gradient(180deg, #0997ff 0%, #0053ee 6%, #0050ee 10%, #06f 14%, #0058ee 40%, #0057ed 88%, #0046c9 100%);
+  --title-fg: #ffffff;
+  --title-inactive-bg: linear-gradient(180deg, #a5bdf0 0%, #7a9ae6 10%, #7593e2 90%, #6d8bd9 100%);
+  --title-inactive-fg: #dfe6f7;
+  --titlebar-h: 29px;
+
+  --taskbar-h: 30px;
+  --taskbar-bg: linear-gradient(180deg, #3168d5 0%, #4993e6 4%, #2b60d8 9%, #245edb 55%, #1e4fbb 100%);
+  --taskbar-shadow: none;
+  --task-active-pattern: none;
+
+  --icon-fg: #ffffff;
+  --icon-shadow: rgba(0, 0, 0, .7);
+
+  --radius: 8px 8px 0 0;
+  --ctl-radius: 3px;
+
+  --bevel-out: inset 0 0 0 1px #ffffff, 0 0 0 1px #003c74;
+  --bevel-in:  inset 0 0 0 1px #7f9db9;
+}
+
+/* ---------- Classic (Win95 beige) ---------- */
+[data-theme="classic"] {
+  --font-ui: "Tahoma", "Segoe UI", system-ui, sans-serif;
+  --font-title: var(--font-ui);
+  --font-mono: "Cascadia Mono", "Consolas", "Menlo", monospace;
+
+  --desktop-bg: #008080;
+  --desktop-image: none;
+
+  --face: #c0c0c0;
+  --face-light: #ffffff;
+  --face-dark: #808080;
+  --face-darker: #000000;
+
+  --text: #000000;
+  --text-muted: #5a5a5a;
+  --link: #000080;
+
+  --accent: #000080;
+  --accent-fg: #ffffff;
+
+  --win-bg: var(--face);
+  --win-bg-inactive: var(--face);
+  --win-pad: 3px;
+  --win-shadow: 2px 2px 0 rgba(0, 0, 0, .35);
+  --content-bg: #ffffff;
+  --content-fg: #000000;
+
+  --title-bg: linear-gradient(90deg, #000080, #1084d0);
+  --title-fg: #ffffff;
+  --title-inactive-bg: linear-gradient(90deg, #808080, #b5b5b5);
+  --title-inactive-fg: #d8d8d8;
+  --titlebar-h: 20px;
+
+  --taskbar-h: 34px;
+  --taskbar-bg: var(--face);
+  --taskbar-shadow: inset 0 1px #ffffff, inset 0 2px #dfdfdf;
+  --task-active-pattern: repeating-conic-gradient(#fff 0 25%, transparent 0 50%) 0 0 / 2px 2px;
+
+  --icon-fg: #ffffff;
+  --icon-shadow: rgba(0, 0, 0, .65);
+
+  --radius: 0px;
+  --ctl-radius: 0px;
+
+  --bevel-out: inset -1px -1px var(--face-darker), inset 1px 1px var(--face-light),
+               inset -2px -2px var(--face-dark), inset 2px 2px #dfdfdf;
+  --bevel-in:  inset 1px 1px var(--face-dark), inset -1px -1px var(--face-light),
+               inset 2px 2px var(--face-darker), inset -2px -2px #dfdfdf;
+}
+
+/* ---------- Midnight (dark, neon accents) ---------- */
+[data-theme="midnight"] {
+  --font-ui: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-title: var(--font-ui);
+  --font-mono: "Cascadia Mono", "Consolas", monospace;
+
+  --desktop-bg: #0a0d16;
+  --desktop-image:
+    radial-gradient(ellipse at 20% 0%, rgba(124, 92, 255, .25), transparent 50%),
+    radial-gradient(ellipse at 90% 90%, rgba(0, 229, 200, .18), transparent 50%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(255,255,255,.03) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(255,255,255,.03) 39px 40px);
+
+  --face: #171b28;
+  --face-light: #2a3045;
+  --face-dark: #0b0e17;
+  --face-darker: #05070c;
+
+  --text: #e6e8f0;
+  --text-muted: #8b91a7;
+  --link: #7cf5c8;
+
+  --accent: #7c5cff;
+  --accent-fg: #ffffff;
+
+  --win-bg: #171b28;
+  --win-bg-inactive: #171b28;
+  --win-pad: 0px;
+  --win-shadow: 0 16px 40px rgba(0, 0, 0, .6), 0 0 0 1px #2a3045;
+  --content-bg: #0f1220;
+  --content-fg: #e6e8f0;
+
+  --title-bg: linear-gradient(90deg, #7c5cff, #00e5c8);
+  --title-fg: #0a0d16;
+  --title-inactive-bg: #222739;
+  --title-inactive-fg: #8b91a7;
+  --titlebar-h: 24px;
+
+  --taskbar-h: 40px;
+  --taskbar-bg: rgba(15, 18, 32, .92);
+  --taskbar-shadow: 0 -1px 0 #2a3045;
+  --task-active-pattern: none;
+
+  --icon-fg: #e6e8f0;
+  --icon-shadow: rgba(0, 0, 0, .8);
+
+  --radius: 6px;
+  --ctl-radius: 3px;
+
+  --bevel-out: 0 0 0 1px #2a3045, 0 2px 6px rgba(0, 0, 0, .5);
+  --bevel-in:  inset 0 0 0 1px #2a3045;
+}
+
+/* =====================================================================
+   Luna structural overrides — XP chrome is not just colours.
+   ===================================================================== */
+
+/* Windows: blue frame, rounded top, glossy title bar */
+[data-theme="luna"] .window {
+  padding: 0 3px 3px;
+  box-shadow: var(--win-shadow);
+}
+[data-theme="luna"] .window:not(.active) { background: var(--win-bg-inactive); }
+[data-theme="luna"] .window.maximized { padding: 0; }
+[data-theme="luna"] .titlebar {
+  margin: 0 -3px;
+  padding: 0 5px 0 8px;
+  border-radius: 8px 8px 0 0;
+  font-family: var(--font-title);
+  font-size: 13px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .55);
+}
+[data-theme="luna"] .window.maximized .titlebar { margin: 0; border-radius: 0; }
+[data-theme="luna"] .titlebar-controls { gap: 2px; }
+[data-theme="luna"] .tb-btn {
+  width: 21px;
+  height: 21px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #5d9cff 0%, #3a7ff5 45%, #2a6be8 55%, #2360d8 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35), inset -1px -1px 0 rgba(0, 0, 0, .15);
+}
+[data-theme="luna"] .tb-btn[data-action="close"] {
+  background: linear-gradient(180deg, #f2a58a 0%, #e0602f 45%, #d4491c 55%, #c13d15 100%);
+}
+[data-theme="luna"] .tb-btn:hover { filter: brightness(1.15); }
+[data-theme="luna"] .tb-btn:active { box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .5); filter: brightness(.9); }
+[data-theme="luna"] .window:not(.active) .tb-btn { opacity: .72; }
+[data-theme="luna"] .tb-btn svg { width: 11px; height: 11px; }
+[data-theme="luna"] .tb-btn svg [stroke] { stroke-width: 2; }
+[data-theme="luna"] .window-body { margin: 0; box-shadow: none; }
+[data-theme="luna"] .statusbar {
+  margin: 0;
+  padding: 3px 8px;
+  background: var(--face);
+  box-shadow: inset 0 1px 0 #ffffff;
+  border-top: 1px solid var(--face-dark);
+}
+[data-theme="luna"] .resize-handle {
+  background: radial-gradient(circle at 15px 15px, #fff 1px, transparent 1.5px) 0 0 / 4px 4px;
+  opacity: .9;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+[data-theme="luna"] .app-error { color: #c0392b; }
+
+/* Taskbar: blue bar, green "start", light-blue tray */
+[data-theme="luna"] .taskbar { padding: 0; gap: 0; backdrop-filter: none; }
+[data-theme="luna"] .taskbar-sep { display: none; }
+[data-theme="luna"] .start-btn {
+  height: 100%;
+  padding: 0 18px 0 8px;
+  border-radius: 0 12px 12px 0;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 17px;
+  text-transform: lowercase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .55);
+  background: linear-gradient(180deg, #62c65d 0%, #3ea33b 10%, #339432 45%, #2e8c2c 90%, #1f6f1e 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .28), 2px 0 5px rgba(0, 0, 0, .4);
+}
+[data-theme="luna"] .start-btn:hover { filter: brightness(1.08); }
+[data-theme="luna"] .start-btn.open, [data-theme="luna"] .start-btn:active {
+  background: linear-gradient(180deg, #2f8c2d, #237223);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, .45);
+  filter: none;
+}
+[data-theme="luna"] .start-logo { width: 20px; height: 18px; gap: 1px; transform: skewX(-8deg); }
+[data-theme="luna"] .start-logo i { border-radius: 2px 5px 2px 5px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.45); }
+[data-theme="luna"] .tasks { padding: 3px 6px; gap: 4px; }
+[data-theme="luna"] .task-btn {
+  color: #ffffff;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #4d8ef7 0%, #3c7ff2 12%, #3373ea 60%, #2a63d8 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 -1px 0 rgba(0, 0, 0, .15), 0 0 0 1px #1c4fb8;
+}
+[data-theme="luna"] .task-btn:hover { filter: brightness(1.1); }
+[data-theme="luna"] .task-btn.active {
+  font-weight: bold;
+  background: linear-gradient(180deg, #1a48ac 0%, #2456bf 100%);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .55), 0 0 0 1px #12358a;
+}
+[data-theme="luna"] .tray {
+  height: 100%;
+  padding: 0 12px 0 14px;
+  border-radius: 0;
+  color: #ffffff;
+  background: linear-gradient(180deg, #1290f1 0%, #1088e6 8%, #0c74cc 60%, #0a63b3 100%);
+  box-shadow: inset 2px 0 3px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+[data-theme="luna"] .clock { text-shadow: 1px 1px 0 rgba(0, 0, 0, .3); }
+
+/* Start menu: user header, white list, blue footer */
+[data-theme="luna"] .startmenu {
+  min-width: 300px;
+  background: #ffffff;
+  border: 1px solid #0831d9;
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, .45);
+}
+[data-theme="luna"] .startmenu-head {
+  background: linear-gradient(180deg, #2b63d6 0%, #1a4fc4 60%, #1746b0 100%);
+  color: #ffffff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .4);
+  border-bottom: 3px solid #f58a1f;
+}
+[data-theme="luna"] .startmenu-list { padding: 8px 4px; }
+[data-theme="luna"] .startmenu-list li:hover, [data-theme="luna"] .startmenu-list li:focus { background: #316ac5; }
+[data-theme="luna"] .startmenu-list .sep { border-top: 1px solid #d6d2c2; box-shadow: none; }
+[data-theme="luna"] .startmenu-foot {
+  background: linear-gradient(180deg, #3f78e6 0%, #2b63d6 40%, #2358c8 100%);
+  color: #ffffff;
+}
+[data-theme="luna"] .startmenu-foot button:hover { background: rgba(255, 255, 255, .22); }
+
+/* Buttons and wells in the Luna style */
+[data-theme="luna"] .btn {
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f2e8 50%, #e6e2d2 100%);
+  box-shadow: inset -1px -1px 0 #c9c4b4, inset 1px 1px 0 #ffffff;
+}
+[data-theme="luna"] .btn:hover { box-shadow: inset 0 0 0 2px #f9d38f, inset 0 0 0 3px #f7b95a; }
+[data-theme="luna"] .btn:active, [data-theme="luna"] .btn.pressed { background: #e6e2d2; box-shadow: inset 1px 1px 2px rgba(0, 0, 0, .25); }
+[data-theme="luna"] .fieldset { border: 1px solid #d0d0bf; border-radius: 4px; box-shadow: none; }
+[data-theme="luna"] .fieldset > legend { color: #0046d5; }
+[data-theme="luna"] .ctxmenu { border: 1px solid #aca899; box-shadow: 3px 3px 5px rgba(0, 0, 0, .35); background: #ffffff; }
+[data-theme="luna"] .toast { border-radius: 4px; border: 1px solid #0831d9; box-shadow: 2px 2px 6px rgba(0, 0, 0, .35); }
+
+/* Classic: flat navy header on the start menu */
+[data-theme="classic"] .startmenu-head { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; }
+[data-theme="classic"] .startmenu-foot { background: var(--face); border-top: 1px solid var(--face-dark); box-shadow: inset 0 1px var(--face-light); }
+[data-theme="classic"] .startmenu-foot button { color: var(--text); }
+
+/* Midnight: header uses the title gradient */
+[data-theme="midnight"] .startmenu-head { background: var(--title-bg); color: var(--title-fg); }
+[data-theme="midnight"] .startmenu-foot { background: var(--face-dark); }

@@ -1,0 +1,90 @@
+/* Reset + shared primitives. Theme colours live in themes.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text);
+  background: var(--desktop-bg);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: default;
+}
+
+a { color: var(--link); }
+
+h1, h2, h3 { margin: 0 0 .5em; line-height: 1.2; }
+h1 { font-size: 20px; }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+p  { margin: 0 0 .8em; }
+
+.muted { color: var(--text-muted); }
+.mono  { font-family: var(--font-mono); }
+
+/* Classic pushbutton used across apps and chrome */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  min-width: 72px;
+  justify-content: center;
+  background: var(--face);
+  color: var(--text);
+  border: 0;
+  border-radius: var(--ctl-radius);
+  box-shadow: var(--bevel-out);
+  text-decoration: none;
+}
+.btn:active, .btn.pressed { box-shadow: var(--bevel-in); }
+.btn:focus-visible { outline: 1px dotted var(--text); outline-offset: -4px; }
+
+/* Sunken panel (inputs, lists, content wells) */
+.well {
+  background: var(--content-bg);
+  color: var(--content-fg);
+  box-shadow: var(--bevel-in);
+  padding: 8px;
+}
+
+input[type="text"], input[type="search"], textarea, select {
+  font: inherit;
+  color: var(--content-fg);
+  background: var(--content-bg);
+  border: 0;
+  box-shadow: var(--bevel-in);
+  padding: 4px 6px;
+}
+
+/* Group box with a legend, Win95 style */
+.fieldset {
+  border: 0;
+  margin: 0 0 12px;
+  padding: 10px 12px 12px;
+  box-shadow: inset 1px 1px var(--face-light), inset -1px -1px var(--face-dark),
+              inset 2px 2px var(--face-dark), inset -2px -2px var(--face-light);
+}
+.fieldset > legend { padding: 0 4px; font-weight: bold; }
+
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-up { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

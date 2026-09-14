@@ -1,0 +1,74 @@
+{
+  "questions": [
+    {
+      "q": "What is Hudson studying at the University of Toronto?",
+      "options": ["Computer Science", "Human Biology & Pharmacology", "Economics", "Mechanical Engineering"],
+      "answer": 1,
+      "explain": "Human Bio & Pharmacology — the coding and finance are on the side."
+    },
+    {
+      "q": "Which city does Hudson call home?",
+      "options": ["Vancouver", "Montreal", "Toronto", "Calgary"],
+      "answer": 2,
+      "explain": "Toronto, Canada. Check the local time in About Me."
+    },
+    {
+      "q": "Roughly when did Hudson write their first line of code?",
+      "options": ["2010", "2015", "2019", "2023"],
+      "answer": 1,
+      "explain": "2015 — over a decade of button-pressing."
+    },
+    {
+      "q": "Which animal does Hudson openly declare love for?",
+      "options": ["Dogs", "Cats", "Axolotls", "Capybaras"],
+      "answer": 1,
+      "explain": "Cats. It's in the tagline."
+    },
+    {
+      "q": "What operating system is this website cosplaying as?",
+      "options": ["Windows 95", "Mac OS 9", "Windows XP", "Ubuntu 8.04"],
+      "answer": 2,
+      "explain": "Windows XP. The Bliss wallpaper was the giveaway."
+    },
+    {
+      "q": "What is Hudson's Discord handle?",
+      "options": ["_blurrie_", "hudsonlin", "blurry.dev", "hudsOS"],
+      "answer": 0,
+      "explain": "_blurrie_ — underscores included."
+    },
+    {
+      "q": "Sample question — replace me. Hudson's go-to comfort game?",
+      "options": ["Stardew Valley", "Minecraft", "Helldivers 2", "Elden Ring"],
+      "answer": 1,
+      "explain": "Sample answer — edit data/quiz.json."
+    },
+    {
+      "q": "Sample question — replace me. Which of these is on Hudson's finance résumé?",
+      "options": ["Sales forecasting", "Tax preparation", "Auditing", "Actuarial modelling"],
+      "answer": 0,
+      "explain": "Sales forecasts and algorithmic projections."
+    }
+  ],
+  "tiers": [
+    { "min": 0, "label": "Total Stranger", "icon": "🫥", "blurb": "We have never met. That's okay — now we have." },
+    { "min": 3, "label": "Acquaintance", "icon": "👋", "blurb": "You've seen me around. Probably in a Discord call." },
+    { "min": 5, "label": "Friend", "icon": "🤝", "blurb": "Solid. You'd get an invite to the group chat." },
+    { "min": 7, "label": "Close Friend", "icon": "💚", "blurb": "You know things. Good things. Mostly." },
+    { "min": 8, "label": "Suspiciously Well-Informed", "icon": "🕵️", "blurb": "Perfect score. Either we're best friends or you read the JSON." }
+  ],
+  "hotTakes": [
+    "Sample hot take — replace me. Game soundtracks are real albums.",
+    "Sample hot take — replace me. Tabs, not spaces. Fight me.",
+    "Sample hot take — replace me. Windows XP was the peak of desktop UI design.",
+    "Sample hot take — replace me. Cats are the superior programming companion.",
+    "Sample hot take — replace me. Every co-op game should have friendly fire."
+  ],
+  "facts": [
+    "Sample fact — replace me. I've been coding since 2015.",
+    "Sample fact — replace me. This site's window manager is about 250 lines of JavaScript.",
+    "Sample fact — replace me. I study human biology but debug JavaScript for fun.",
+    "Sample fact — replace me. I have a cat. Or want one. (Edit this.)",
+    "Sample fact — replace me. My Discord status is probably 'in game' right now.",
+    "Sample fact — replace me. I trade weekly. Results vary."
+  ]
+}
