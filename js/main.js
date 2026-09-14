@@ -9,7 +9,6 @@ import { initRouter } from './router.js';
 import { restoreWindows, wm } from './wm.js';
 import { sfx } from './sfx.js';
 import { initKonami } from './gimmicks/konami.js';
-import { initAssistant } from './gimmicks/assistant.js';
 import { initLive } from './live.js';
 
 initTheme();
@@ -24,7 +23,6 @@ restoreWindows();
 openFromHash();
 
 initKonami();
-initAssistant({ wm });
 initLive();
 
 sfx.play('startup');

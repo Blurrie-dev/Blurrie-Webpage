@@ -26,9 +26,11 @@ const api = async (path, params) => {
 const pick = (g) => ({
   appid: g.appid,
   name: g.name,
-  hours: Math.round((g.playtime_forever || 0) / 60),
+  hours: Math.round(((g.playtime_forever || 0) / 60) * 10) / 10,
   hours2w: Math.round(((g.playtime_2weeks || 0) / 60) * 10) / 10,
+  lastPlayed: g.rtime_last_played ? new Date(g.rtime_last_played * 1000).toISOString().slice(0, 10) : null,
   image: `https://cdn.cloudflare.steamstatic.com/steam/apps/${g.appid}/header.jpg`,
+  icon: g.img_icon_url ? `https://media.steampowered.com/steamcommunity/public/images/apps/${g.appid}/${g.img_icon_url}.jpg` : null,
 });
 
 const recent = await api('IPlayerService/GetRecentlyPlayedGames/v1/', { count: 6 });
@@ -40,7 +42,7 @@ const out = {
   totalGames: owned.game_count || games.length,
   totalHours: Math.round(games.reduce((s, g) => s + g.playtime_forever, 0) / 60),
   recent: (recent.games || []).map(pick),
-  top: games.sort((a, b) => b.playtime_forever - a.playtime_forever).slice(0, 12).map(pick),
+  top: games.sort((a, b) => b.playtime_forever - a.playtime_forever).slice(0, 25).map(pick),
 };
 
 await writeFile(new URL('../data/steam.json', import.meta.url), JSON.stringify(out, null, 2) + '\n');

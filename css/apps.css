@@ -294,6 +294,9 @@
 .steam-list li:focus-visible { outline: 1px solid #66c0f4; outline-offset: -1px; }
 .steam-li-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .steam-li-hours { font-family: var(--font-mono); font-size: 11px; opacity: .8; }
+.steam-li-icon { width: 20px; display: inline-flex; justify-content: center; }
+.steam-li-icon img { width: 20px; height: 20px; border-radius: 3px; }
+.steam-hero-icon img { width: 48px; height: 48px; border-radius: 6px; }
 .steam-detail { flex: 1 1 280px; min-width: 0; padding: 16px 18px; overflow: auto; }
 .steam-hero { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
 .steam-hero-icon { font-size: 44px; line-height: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,.6)); }

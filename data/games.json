@@ -2,22 +2,10 @@
   {
     "title": "Helldivers 2",
     "icon": "🪖",
-    "hours": 420,
     "genre": ["Co-op", "Shooter"],
     "status": "playing",
     "rating": 5,
-    "take": "Sample take — replace me. For Super Earth. The best 'one more mission' game ever made.",
-    "year": 2024
-  },
-  {
-    "title": "Elden Ring",
-    "icon": "⚔️",
-    "hours": 210,
-    "genre": ["Action RPG", "Soulslike"],
-    "status": "completed",
-    "rating": 5,
-    "take": "Sample take — replace me. Got lost for 40 hours and it was the best part.",
-    "year": 2022
+    "take": "Sample take — replace me. Titles that match a Steam game only add these annotations; hours and artwork come from Steam."
   },
   {
     "title": "Minecraft",
@@ -26,47 +14,7 @@
     "genre": ["Sandbox", "Survival"],
     "status": "forever",
     "rating": 5,
-    "take": "Sample take — replace me. Been playing since the days when beds could explode.",
+    "take": "Sample non-Steam entry — replace or delete me. Games not on Steam need their own hours here.",
     "year": 2011
-  },
-  {
-    "title": "Counter-Strike 2",
-    "icon": "🎯",
-    "hours": 650,
-    "genre": ["FPS", "Competitive"],
-    "status": "playing",
-    "rating": 4,
-    "take": "Sample take — replace me. Rank withheld for legal reasons.",
-    "year": 2023
-  },
-  {
-    "title": "Stardew Valley",
-    "icon": "🌾",
-    "hours": 95,
-    "genre": ["Farming", "Cozy"],
-    "status": "completed",
-    "rating": 5,
-    "take": "Sample take — replace me. The only game that lowers my heart rate.",
-    "year": 2016
-  },
-  {
-    "title": "Hades",
-    "icon": "🔥",
-    "hours": 60,
-    "genre": ["Roguelike", "Action"],
-    "status": "completed",
-    "rating": 4,
-    "take": "Sample take — replace me. Every death is your fault and somehow that's fine.",
-    "year": 2020
-  },
-  {
-    "title": "Baldur's Gate 3",
-    "icon": "🎲",
-    "hours": 30,
-    "genre": ["CRPG", "Turn-based"],
-    "status": "backlog",
-    "rating": 0,
-    "take": "Sample take — replace me. Still in Act 1. Will finish it. Eventually.",
-    "year": 2023
   }
 ]

@@ -28,12 +28,19 @@ Start with `data/profile.json` (bio, location, socials).
   link Spotify to Discord to get now-playing too.
 - **GitHub stars** on projects are fetched live when `repo` is set in
   `data/projects.json`.
-- **Steam** (recent activity, real hours, artwork) is refreshed every 6 hours by
-  `.github/workflows/steam-sync.yml`, which writes `data/steam.json`. Set two
-  repository secrets: `STEAM_API_KEY` (from steamcommunity.com/dev/apikey) and
-  `STEAM_ID` (SteamID64). Your Steam profile's *Game details* must be public.
-  Run it once by hand from the Actions tab; without the file the Games app
-  simply uses `data/games.json`.
+- **Steam** — the Games app shows your real library (top 25 by hours, recent
+  activity, artwork, last played) from `data/steam.json`, refreshed every 6
+  hours by `.github/workflows/steam-sync.yml`. `data/games.json` then only adds
+  your own ratings / takes / status to matching titles, plus any non-Steam
+  games. To enable:
+  1. Steam → Edit Profile → Privacy Settings → **Game details: Public**
+     (and untick "Always keep my total playtime private").
+  2. Get a key at <https://steamcommunity.com/dev/apikey> (any domain name).
+  3. Repo → Settings → Secrets and variables → Actions → add `STEAM_API_KEY`
+     and `STEAM_ID` (`76561198965734883`).
+  4. Actions tab → *Sync Steam data* → *Run workflow*. It commits
+     `data/steam.json`; pull to get it locally.
+  Or run it locally: `$env:STEAM_API_KEY="..."; $env:STEAM_ID="76561198965734883"; node scripts/steam-sync.mjs`
 
 ## Deploy
 
@@ -48,7 +55,7 @@ index.html        the OS shell
 css/              base, themes, shell (windows/taskbar), apps
 js/wm.js          window manager
 js/apps/          one module per app; registry.js lists them
-js/gimmicks/      boot screen, shutdown, BSOD, Konami, assistant
+js/gimmicks/      boot screen, shutdown, BSOD, Konami
 js/live.js        Discord presence via Lanyard
 scripts/          steam-sync.mjs (run by the GitHub Action)
 data/             your content (JSON)

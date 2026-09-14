@@ -26,13 +26,22 @@ export default {
     const [games, profile, steamData] = await Promise.all([
       loadData('games'), loadData('profile'), loadData('steam').catch(() => null), // steam.json is optional
     ]);
-    // Merge live Steam numbers (from the GitHub Action) into the hand-written list by title
-    const byName = new Map([...(steamData?.top || []), ...(steamData?.recent || [])].map((g) => [g.name.toLowerCase(), g]));
-    for (const g of games) {
-      const s = byName.get((g.title || '').toLowerCase());
-      if (s) { g.hours = s.hours; g.image = g.image || s.image; g.appid = s.appid; g.hours2w = s.hours2w; }
+    // Library = the real Steam library (when synced) + hand-written entries for
+    // anything not on Steam. games.json entries whose title matches a Steam game
+    // only contribute their annotations (icon, take, rating, status, genre).
+    const key = (s) => (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const manual = new Map(games.map((g) => [key(g.title), g]));
+    const library = new Map();
+    for (const s of [...(steamData?.top || []), ...(steamData?.recent || [])]) {
+      if (library.has(key(s.name))) continue;
+      const m = manual.get(key(s.name)) || {};
+      library.set(key(s.name), {
+        ...m, title: s.name, hours: s.hours, hours2w: s.hours2w, appid: s.appid, lastPlayed: s.lastPlayed,
+        image: m.image || s.image, iconUrl: s.icon, fromSteam: true,
+      });
     }
-    const sorted = games.slice().sort((a, b) => (b.hours || 0) - (a.hours || 0));
+    for (const g of games) if (!library.has(key(g.title))) library.set(key(g.title), g);
+    const sorted = [...library.values()].sort((a, b) => (b.hours || 0) - (a.hours || 0));
     const total = steamData?.totalHours || sorted.reduce((s, g) => s + (g.hours || 0), 0);
     const count = steamData?.totalGames || sorted.length;
     const steam = (profile.socials || []).find((s) => s.id === 'steam');
@@ -59,7 +68,7 @@ export default {
           <ul class="steam-list" role="listbox" aria-label="Games">
             ${sorted.map((g, i) => `
               <li role="option" tabindex="0" data-i="${i}" class="${i === 0 ? 'selected' : ''}">
-                <span class="steam-li-icon" aria-hidden="true">${esc(g.icon || '🎮')}</span>
+                <span class="steam-li-icon" aria-hidden="true">${g.iconUrl ? `<img src="${esc(g.iconUrl)}" alt="" loading="lazy">` : esc(g.icon || '🎮')}</span>
                 <span class="steam-li-title">${esc(g.title)}</span>
                 <span class="steam-li-hours">${fmtHours(g.hours || 0)}h</span>
               </li>`).join('')}
@@ -73,12 +82,12 @@ export default {
 
     const show = (i) => {
       const g = sorted[i];
-      const st = STATUS[g.status] || { label: g.status || '', cls: '' };
+        const st = STATUS[g.status] || { label: g.status || '', cls: '' };
       list.querySelectorAll('li').forEach((li) => li.classList.toggle('selected', +li.dataset.i === i));
       detail.innerHTML = `
         ${g.image ? `<img class="steam-banner" src="${esc(g.image)}" alt="" loading="lazy">` : ''}
         <div class="steam-hero">
-          <span class="steam-hero-icon" aria-hidden="true">${esc(g.icon || '🎮')}</span>
+          <span class="steam-hero-icon" aria-hidden="true">${g.iconUrl ? `<img src="${esc(g.iconUrl)}" alt="">` : esc(g.icon || '🎮')}</span>
           <div>
             <h2>${esc(g.title)}</h2>
             <div class="steam-tags">${(g.genre || []).map((t) => `<span>${esc(t)}</span>`).join('')}</div>
@@ -86,8 +95,9 @@ export default {
         </div>
         <dl class="steam-facts">
           <dt>Time played</dt><dd><b>${(g.hours || 0).toLocaleString()}</b> hrs${g.hours2w ? ` <span class="muted">· ${g.hours2w}h past two weeks</span>` : ''}</dd>
-          <dt>Status</dt><dd><span class="steam-status ${st.cls}">${esc(st.label)}</span></dd>
-          <dt>My rating</dt><dd class="steam-stars" title="${g.rating || 0} / 5">${stars(g.rating || 0)}</dd>
+          ${g.lastPlayed ? `<dt>Last played</dt><dd>${esc(g.lastPlayed)}</dd>` : ''}
+          ${g.status ? `<dt>Status</dt><dd><span class="steam-status ${st.cls}">${esc(st.label)}</span></dd>` : ''}
+          ${g.rating ? `<dt>My rating</dt><dd class="steam-stars" title="${g.rating} / 5">${stars(g.rating)}</dd>` : ''}
           ${g.year ? `<dt>Released</dt><dd>${g.year}</dd>` : ''}
         </dl>
         ${g.take ? `<blockquote class="steam-take">“${esc(g.take)}”</blockquote>` : ''}
