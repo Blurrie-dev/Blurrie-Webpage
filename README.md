@@ -35,6 +35,12 @@ Start with `data/profile.json` (bio, location, socials).
   Run it once by hand from the Actions tab; without the file the Games app
   simply uses `data/games.json`.
 
+## Deploy
+
+Hosted on GitHub Pages from the `main` branch (root). Every push to `main`
+is live within a minute at <https://blurrie-dev.github.io/Blurrie-Webpage/>.
+`.nojekyll` keeps Pages from running Jekyll on the files.
+
 ## Layout
 
 ```

@@ -268,6 +268,16 @@ function wireWindow(win) {
   });
 }
 
+// Escape closes the focused window (but not while typing in a field, and not
+// when a menu is open — those handle Escape themselves).
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape' || e.defaultPrevented) return;
+  if (e.target instanceof Element && e.target.closest('input, textarea, select, [contenteditable]')) return;
+  if (!document.getElementById('startmenu').hidden || !document.getElementById('ctxmenu').hidden) return;
+  const top = activeWindow();
+  if (top) closeWindow(top.id);
+});
+
 // Keep windows on screen when the viewport changes (rotation, devtools, etc.)
 window.addEventListener('resize', () => {
   for (const win of windows.values()) { clampRect(win); applyRect(win); }

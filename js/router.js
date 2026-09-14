@@ -15,6 +15,7 @@ export function initRouter() {
   // Keep the hash pointing at the focused app, but leave an app's own sub-path alone.
   wm.addEventListener('focus', (e) => {
     const id = e.detail.id;
+    document.title = id ? `${getApp(id)?.title ?? id} — HudsonOS` : 'HudsonOS';
     const current = location.hash.slice(1).split('/')[0];
     if (current === id) return;
     history.replaceState(null, '', id ? `#${id}` : location.pathname + location.search);
