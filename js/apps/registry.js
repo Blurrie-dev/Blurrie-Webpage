@@ -5,7 +5,6 @@
 
 import { store } from '../store.js';
 import about from './about.js';
-import timeline from './timeline.js';
 import projects from './projects.js';
 import games from './games.js';
 import music from './music.js';
@@ -19,7 +18,6 @@ import sysinfo from './sysinfo.js';
 
 export const apps = [
   about,
-  timeline,
   projects,
   games,
   music,
