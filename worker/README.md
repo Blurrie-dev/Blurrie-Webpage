@@ -1,8 +1,9 @@
-# hudsonos-ask — the "Ask Hudson" backend
+# hudsonos-ask — the AMA backend
 
-A Cloudflare Worker that proxies the site's chat window to Claude Haiku 4.5.
-It holds the API key, builds a compact fact sheet from `data/*.json`, caps
-every reply at 300 tokens, and rate-limits callers (10 requests / minute / IP).
+A Cloudflare Worker that proxies the site's AMA chat window to Claude Haiku 4.5.
+It holds the API key, builds a compact fact sheet from `data/*.json` (so the
+assistant knows about Hudson while still answering general questions), caps
+every reply at 350 tokens, and rate-limits callers (10 requests / minute / IP).
 
 Cost: ~800 input + ~150 output tokens per message ≈ **$0.002**. Cloudflare's
 free plan covers 100k requests/day.

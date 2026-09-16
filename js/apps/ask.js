@@ -1,4 +1,5 @@
-// Ask Hudson: a small chat window backed by Claude Haiku via worker/ (Cloudflare).
+// AMA: a small chat window backed by Claude Haiku via worker/ (Cloudflare).
+// Answers general questions and knows the facts on this site about Hudson.
 // The endpoint lives in data/profile.json → assistant.endpoint.
 
 import { loadData } from '../data.js';
@@ -7,15 +8,15 @@ import { esc } from '../ui.js';
 const SUGGESTIONS = [
   'What does Hudson study?',
   'What has Hudson built?',
-  'What games is Hudson into?',
-  'How do I contact Hudson?',
+  'Explain how this website works',
+  'Tell me a fun fact about space',
 ];
 
 let abort = null;
 
 export default {
   id: 'ask',
-  title: 'Ask Hudson',
+  title: 'AMA',
   icon: '✨',
   size: { w: 460, h: 520 },
 
@@ -29,17 +30,17 @@ export default {
       <div class="ask">
         <div class="ask-log" id="ask-log" aria-live="polite">
           <div class="ask-msg bot">
-            <div class="ask-bubble">Hi! I'm a small Claude model that knows a bit about ${esc(profile.name || 'Hudson')}. Ask me anything about him — I'll keep it short.</div>
+            <div class="ask-bubble">Ask me anything. I'm a small Claude model — I know the facts on this site about ${esc(profile.name || 'Hudson')}, and I can answer general questions too. I keep it short.</div>
           </div>
           <div class="ask-chips" id="ask-chips">
             ${SUGGESTIONS.map((s) => `<button class="ask-chip" data-q="${esc(s)}">${esc(s)}</button>`).join('')}
           </div>
         </div>
         <form class="ask-form" id="ask-form" autocomplete="off">
-          <input id="ask-in" type="text" maxlength="500" placeholder="Ask about Hudson…" aria-label="Your question" ${endpoint ? '' : 'disabled'}>
+          <input id="ask-in" type="text" maxlength="500" placeholder="Ask me anything…" aria-label="Your question" ${endpoint ? '' : 'disabled'}>
           <button class="btn" id="ask-send" type="submit" ${endpoint ? '' : 'disabled'}>Send</button>
         </form>
-        <p class="ask-foot muted">Claude Haiku 4.5 · answers only from this site's data · can still be wrong</p>
+        <p class="ask-foot muted">Claude Haiku 4.5 · facts about Hudson come from this site · can still be wrong</p>
       </div>`;
 
     const log = root.querySelector('#ask-log');
