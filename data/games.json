@@ -13,5 +13,6 @@
   {"title": "World of Tanks", "icon": "🛡️", "genre": ["Vehicle combat", "MMO"]},
   {"title": "Total War: WARHAMMER III", "icon": "⚔️", "genre": ["Strategy", "RTS"]},
   {"title": "Minecraft", "icon": "🟩", "genre": ["Sandbox", "Survival"], "platform": "Java"},
-  {"title": "Overwatch 2", "icon": "🎯", "genre": ["Hero shooter"], "platform": "Battle.net"}
+  {"title": "Overwatch 2", "icon": "🎯", "genre": ["Hero shooter"], "platform": "Battle.net"},
+  {"title": "League of Legends", "icon": "🏆", "genre": ["MOBA"], "platform": "Riot"}
 ]
