@@ -39,7 +39,7 @@ export default {
         </fieldset>
         <fieldset class="fieldset">
           <legend>Danger zone</legend>
-          <p class="muted">Forgets your theme, sound choice, unlocked apps and quiz scores.</p>
+          <p class="muted">Forgets your theme, sound choice and unlocked apps.</p>
           <div class="actions"><button class="btn" id="set-reset">Reset HudsonOS</button></div>
         </fieldset>
       </div>`;

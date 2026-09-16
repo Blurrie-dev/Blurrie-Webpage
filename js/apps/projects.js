@@ -88,7 +88,8 @@ async function renderDetail(id) {
 
 export default {
   id: 'projects',
-  title: 'Projects',
+  title: 'Coding Projects',
+  group: 'hobby',
   icon: '📁',
   size: { w: 640, h: 500 },
 

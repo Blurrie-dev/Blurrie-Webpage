@@ -1,0 +1,67 @@
+[
+  {
+    "id": "kendo",
+    "tagline": "(edit me) One line on what kendo means to you.",
+    "body": [
+      "(edit me) How you got into kendo, where you train, what keeps you coming back."
+    ],
+    "facts": [
+      { "label": "Rank", "value": "(edit me)" },
+      { "label": "Training since", "value": "(edit me)" },
+      { "label": "Dojo", "value": "(edit me)" }
+    ],
+    "links": []
+  },
+  {
+    "id": "guitar",
+    "tagline": "(edit me) Acoustic? Electric? What do you play?",
+    "body": [
+      "(edit me) How long you've played, what you're learning right now, favourite thing to play."
+    ],
+    "facts": [
+      { "label": "Playing since", "value": "(edit me)" },
+      { "label": "Guitar", "value": "(edit me)" },
+      { "label": "Currently learning", "value": "(edit me)" }
+    ],
+    "links": []
+  },
+  {
+    "id": "astronomy",
+    "tagline": "(edit me) What you look up at.",
+    "body": [
+      "(edit me) Telescope or naked eye? Favourite object, best thing you've seen, where you go to escape light pollution."
+    ],
+    "facts": [
+      { "label": "Gear", "value": "(edit me)" },
+      { "label": "Favourite object", "value": "(edit me)" },
+      { "label": "Bucket list", "value": "(edit me)" }
+    ],
+    "links": []
+  },
+  {
+    "id": "camping",
+    "tagline": "(edit me) Tent, hammock, or car?",
+    "body": [
+      "(edit me) Favourite spots, the trip you still talk about, the one thing you never leave without."
+    ],
+    "facts": [
+      { "label": "Favourite spot", "value": "(edit me)" },
+      { "label": "Style", "value": "(edit me)" },
+      { "label": "Next trip", "value": "(edit me)" }
+    ],
+    "links": []
+  },
+  {
+    "id": "running",
+    "tagline": "(edit me) Why you run.",
+    "body": [
+      "(edit me) Distance, pace, races you've done or want to do, favourite route in Toronto."
+    ],
+    "facts": [
+      { "label": "Weekly km", "value": "(edit me)" },
+      { "label": "Best 5K", "value": "(edit me)" },
+      { "label": "Next race", "value": "(edit me)" }
+    ],
+    "links": []
+  }
+]

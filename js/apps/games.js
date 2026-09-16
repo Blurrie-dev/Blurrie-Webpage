@@ -16,7 +16,8 @@ const fmtHours = (h) => h >= 1000 ? `${(h / 1000).toFixed(1)}k` : String(h);
 
 export default {
   id: 'games',
-  title: 'Games',
+  title: 'Gaming',
+  group: 'hobby',
   icon: '🕹️',
   size: { w: 680, h: 480 },
 

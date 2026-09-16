@@ -1,4 +1,4 @@
-// About Me: bio, avatar, quick stats, and a "currently" widget. All from data/profile.json.
+// Profile: bio, avatar, quick stats, and a "currently" widget. All from data/profile.json.
 
 import { loadData } from '../data.js';
 import { esc } from '../ui.js';
@@ -17,7 +17,7 @@ function localTime(tz) {
 
 export default {
   id: 'about',
-  title: 'About Me',
+  title: 'Profile',
   icon: '👤',
   size: { w: 580, h: 470 },
 

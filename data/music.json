@@ -1,44 +1,7 @@
 [
-  {
-    "artist": "Daft Punk",
-    "title": "Discovery",
-    "year": 2001,
-    "note": "Sample entry — replace me. The album that made me care about production.",
-    "url": "https://open.spotify.com/search/Daft%20Punk%20Discovery"
-  },
-  {
-    "artist": "Porter Robinson",
-    "title": "Nurture",
-    "year": 2021,
-    "note": "Sample entry — replace me. Late-night coding soundtrack.",
-    "url": "https://open.spotify.com/search/Porter%20Robinson%20Nurture"
-  },
-  {
-    "artist": "Kendrick Lamar",
-    "title": "good kid, m.A.A.d city",
-    "year": 2012,
-    "note": "Sample entry — replace me. Front to back, no skips.",
-    "url": "https://open.spotify.com/search/Kendrick%20Lamar%20good%20kid%20maad%20city"
-  },
-  {
-    "artist": "Radiohead",
-    "title": "In Rainbows",
-    "year": 2007,
-    "note": "Sample entry — replace me. Weird Fishes on repeat.",
-    "url": "https://open.spotify.com/search/Radiohead%20In%20Rainbows"
-  },
-  {
-    "artist": "Tame Impala",
-    "title": "Currents",
-    "year": 2015,
-    "note": "Sample entry — replace me. Summer, distilled.",
-    "url": "https://open.spotify.com/search/Tame%20Impala%20Currents"
-  },
-  {
-    "artist": "Toby Fox",
-    "title": "UNDERTALE Soundtrack",
-    "year": 2015,
-    "note": "Sample entry — replace me. Game OSTs count. Fight me.",
-    "url": "https://open.spotify.com/search/Undertale%20Soundtrack"
-  }
+  { "artist": "Carly Rae Jepsen", "title": "Call Me Maybe", "year": 2012, "spotify": "5UMgKsx50UqgN7VMNmeDuW" },
+  { "artist": "Flo Rida", "title": "Right Round (feat. Ke$ha)", "year": 2009, "spotify": "3GpbwCm3YxiWDvy29Uo3vP" },
+  { "artist": "Kanye West", "title": "Stronger", "year": 2007, "spotify": "0j2T0R9dR9qdJYsB7ciXhf" },
+  { "artist": "Mariah Carey", "title": "Fantasy", "year": 1995, "spotify": "6xkryXuiZU360Lngd4sx13" },
+  { "artist": "Journey", "title": "Any Way You Want It", "year": 1980, "spotify": "71SvEDmsOwIWw1IozsZoMA" }
 ]

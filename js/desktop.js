@@ -14,11 +14,13 @@ export function initDesktop() {
   const iconsEl = document.getElementById('icons');
 
   const renderIcons = () => {
-    iconsEl.innerHTML = apps.filter((a) => a.desktop !== false && isVisible(a)).map((a) => `
+    const shown = apps.filter((a) => a.desktop !== false && isVisible(a));
+    const col = (list) => `<div class="icon-col">${list.map((a) => `
       <button class="icon" role="listitem" data-app="${esc(a.id)}" title="${esc(a.title)}">
         <span class="icon-img" aria-hidden="true">${esc(a.icon)}</span>
         <span class="icon-label">${esc(a.title)}</span>
-      </button>`).join('');
+      </button>`).join('')}</div>`;
+    iconsEl.innerHTML = col(shown.filter((a) => a.group !== 'hobby')) + col(shown.filter((a) => a.group === 'hobby'));
   };
   renderIcons();
   rerender = renderIcons;
