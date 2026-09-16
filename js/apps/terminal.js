@@ -100,6 +100,7 @@ export default {
         for (let i = 0; i < rows; i++) print(`<span class="term-logo">${esc(LOGO[i] || ' '.repeat(40))}</span>   ${info[i] || ''}`, 'term-pre');
         print(`<span class="term-swatch">${['#ff5f57', '#febc2e', '#28c840', '#0078d7', '#c86dd7', '#00e5c8', '#fff', '#888'].map((c) => `<i style="background:${c}"></i>`).join('')}</span>`);
       } },
+      ask: { desc: 'ask <question> — ask Claude about Hudson', run: (args) => { ctx.openApp('ask', { param: args.join(' ') || null }); print('Opening Ask Hudson…'); } },
       whoami: { desc: 'who are you', run: () => print('visitor. Nice to meet you.') },
       date: { desc: 'current date', run: () => print(esc(new Date().toString())) },
       echo: { desc: 'echo <text>', run: (args) => print(esc(args.join(' '))) },

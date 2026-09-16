@@ -20,6 +20,9 @@
   ],
   "avatar": "assets/images/avatar.png",
   "discordId": "558039007917899788",
+  "assistant": {
+    "endpoint": ""
+  },
   "bio": [
     "Hi, I'm Hudson! Welcome to my site!",
     "Poke around! Find out more about me!"

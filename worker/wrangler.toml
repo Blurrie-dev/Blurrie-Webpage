@@ -1,0 +1,21 @@
+# Cloudflare Worker for the "Ask Hudson" app. Deploy with:  npx wrangler deploy
+name = "hudsonos-ask"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Origins allowed to call /chat (comma-separated). Add your custom domain here if you get one.
+ALLOWED_ORIGINS = "https://blurrie-dev.github.io,http://localhost:5173,http://127.0.0.1:5173"
+# Where to fetch the latest data/*.json from (edge-cached 10 min). Leave empty to
+# always use the copies bundled at deploy time.
+SITE_ORIGIN = "https://blurrie-dev.github.io/Blurrie-Webpage"
+
+# Per-IP rate limit: 10 requests per minute.
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }
+
+# The API key is a secret, never in this file:
+#   npx wrangler secret put ANTHROPIC_API_KEY

@@ -42,6 +42,14 @@ Start with `data/profile.json` (bio, location, socials).
      `data/steam.json`; pull to get it locally.
   Or run it locally: `$env:STEAM_API_KEY="..."; $env:STEAM_ID="76561198965734883"; node scripts/steam-sync.mjs`
 
+## Ask Hudson (Claude)
+
+The ✨ *Ask Hudson* app is a chat window backed by Claude Haiku 4.5 through a
+tiny Cloudflare Worker in `worker/` (the API key never touches the browser).
+See `worker/README.md` — deploy it, paste its `/chat` URL into
+`data/profile.json → assistant.endpoint`, and the app lights up. Until then
+it shows a "not connected" note.
+
 ## Deploy
 
 Hosted on GitHub Pages from the `main` branch (root). Every push to `main`
@@ -58,5 +66,6 @@ js/apps/          one module per app; registry.js lists them
 js/gimmicks/      boot screen, shutdown, BSOD, Konami
 js/live.js        Discord presence via Lanyard
 scripts/          steam-sync.mjs (run by the GitHub Action)
+worker/           Cloudflare Worker behind the Ask Hudson app
 data/             your content (JSON)
 ```

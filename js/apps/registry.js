@@ -13,6 +13,7 @@ import quiz from './quiz.js';
 import terminal from './terminal.js';
 import snake from './snake.js';
 import contact from './contact.js';
+import ask from './ask.js';
 import settings from './settings.js';
 import sysinfo from './sysinfo.js';
 
@@ -26,6 +27,7 @@ export const apps = [
   terminal,
   snake,
   contact,
+  ask,
   settings,
   sysinfo,
 ];
