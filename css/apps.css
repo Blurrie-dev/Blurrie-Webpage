@@ -263,6 +263,10 @@
 .hobby-facts dt { color: var(--text-muted); }
 .hobby-facts dd { margin: 0; }
 .hobby-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.hobby-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin: 12px 0; }
+.hobby-photos figure { margin: 0; }
+.hobby-photos img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+.hobby-photos figcaption { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
 
 /* ---------- Terminal ---------- */
 .term {

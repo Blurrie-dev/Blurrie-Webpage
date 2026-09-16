@@ -24,6 +24,11 @@ export const hobbyApp = ({ id, title, icon }) => ({
         </header>
         ${(h.body || []).map((p) => `<p>${esc(p)}</p>`).join('')}
         ${h.facts?.length ? `<dl class="hobby-facts">${h.facts.map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd>`).join('')}</dl>` : ''}
+        ${h.photos?.length ? `<div class="hobby-photos">${h.photos.map((ph) => {
+          const src = typeof ph === 'string' ? ph : ph.src;
+          const cap = typeof ph === 'string' ? '' : ph.caption || '';
+          return `<figure><a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(cap)}" loading="lazy"></a>${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
+        }).join('')}</div>` : ''}
         ${h.links?.length ? `<p class="hobby-links">${h.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`).join('')}</p>` : ''}
       </div>`;
   },
