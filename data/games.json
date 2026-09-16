@@ -1,20 +1,15 @@
 [
-  {
-    "title": "Helldivers 2",
-    "icon": "🪖",
-    "genre": ["Co-op", "Shooter"],
-    "status": "playing",
-    "rating": 5,
-    "take": "Sample take — replace me. Titles that match a Steam game only add these annotations; hours and artwork come from Steam."
-  },
-  {
-    "title": "Minecraft",
-    "icon": "⛏️",
-    "hours": 1200,
-    "genre": ["Sandbox", "Survival"],
-    "status": "forever",
-    "rating": 5,
-    "take": "Sample non-Steam entry — replace or delete me. Games not on Steam need their own hours here.",
-    "year": 2011
-  }
+  { "title": "Baldur's Gate 3", "icon": "🎲", "genre": ["RPG", "Turn-based"] },
+  { "title": "Deep Rock Galactic", "icon": "⛏️", "genre": ["Co-op", "Shooter"] },
+  { "title": "Helldivers 2", "icon": "🪖", "genre": ["Co-op", "Shooter"] },
+  { "title": "Lethal Company", "icon": "📦", "genre": ["Co-op", "Horror"] },
+  { "title": "Path of Exile 2", "icon": "💀", "genre": ["ARPG"] },
+  { "title": "Satisfactory", "icon": "🏭", "genre": ["Factory", "Sandbox"] },
+  { "title": "Sid Meier's Civilization VI", "icon": "🌍", "genre": ["4X", "Strategy"] },
+  { "title": "Stellaris", "icon": "🪐", "genre": ["4X", "Grand strategy"] },
+  { "title": "Terraria", "icon": "🌳", "genre": ["Sandbox", "Survival"] },
+  { "title": "StarCraft II", "icon": "👾", "genre": ["RTS"], "platform": "Battle.net" },
+  { "title": "Diablo IV", "icon": "🔥", "genre": ["ARPG"] },
+  { "title": "World of Tanks", "icon": "🛡️", "genre": ["Vehicle combat", "MMO"] },
+  { "title": "Total War: WARHAMMER III", "icon": "⚔️", "genre": ["Strategy", "RTS"] }
 ]
