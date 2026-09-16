@@ -5,7 +5,7 @@
     "icon": "💾",
     "year": 2026,
     "status": "active",
-    "tagline": "This website. A personal site disguised as a Windows XP desktop.",
+    "tagline": "This website. A personal site disguised as a Windows 10 desktop (with an XP theme for the nostalgic).",
     "description": [
       "A window manager, taskbar, start menu, boot screen and theme engine written from scratch in vanilla JavaScript — no frameworks, no build step.",
       "Every app on the desktop is a small module that renders from JSON, so the whole site is content-editable without touching code."

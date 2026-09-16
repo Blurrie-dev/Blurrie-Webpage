@@ -21,7 +21,7 @@
   "avatar": "assets/images/avatar.png",
   "discordId": "558039007917899788",
   "assistant": {
-    "endpoint": ""
+    "endpoint": "https://hudsonos-ask.hudsonlindev.workers.dev/chat"
   },
   "bio": [
     "Hi, I'm Hudson! Welcome to my site!",
