@@ -1,66 +1,59 @@
 [
   {
     "id": "kendo",
-    "tagline": "(edit me) One line on what kendo means to you.",
+    "tagline": "Since 2016.",
     "body": [
-      "(edit me) How you got into kendo, where you train, what keeps you coming back."
+      "Started Kendo in 2016. Ontario Junior Individual & Teams Champion. Junior Team Canada."
     ],
     "facts": [
-      { "label": "Rank", "value": "(edit me)" },
-      { "label": "Training since", "value": "(edit me)" },
-      { "label": "Dojo", "value": "(edit me)" }
+      { "label": "Rank", "value": "Sandan" },
+      { "label": "Dojo", "value": "University of Toronto Kendo Club" }
     ],
     "links": []
   },
   {
     "id": "guitar",
-    "tagline": "(edit me) Acoustic? Electric? What do you play?",
+    "tagline": "Since 2022.",
     "body": [
-      "(edit me) How long you've played, what you're learning right now, favourite thing to play."
+      "I love playing electric guitar! I also play acoustic and I am a big fan of Lynyrd Skynyrd!"
     ],
     "facts": [
-      { "label": "Playing since", "value": "(edit me)" },
-      { "label": "Guitar", "value": "(edit me)" },
-      { "label": "Currently learning", "value": "(edit me)" }
+      { "label": "Guitar", "value": "Electric" }
     ],
     "links": []
   },
   {
     "id": "astronomy",
-    "tagline": "(edit me) What you look up at.",
+    "tagline": "Since 2024.",
     "body": [
-      "(edit me) Telescope or naked eye? Favourite object, best thing you've seen, where you go to escape light pollution."
+      "Set your course by the stars, not by the light of every passing ship."
     ],
     "facts": [
-      { "label": "Gear", "value": "(edit me)" },
-      { "label": "Favourite object", "value": "(edit me)" },
-      { "label": "Bucket list", "value": "(edit me)" }
+      { "label": "Gear", "value": "Celestron 70mm" },
+      { "label": "Favourite object", "value": "Orion Nebula" }
     ],
     "links": []
   },
   {
     "id": "camping",
-    "tagline": "(edit me) Tent, hammock, or car?",
+    "tagline": "Since 2020.",
     "body": [
-      "(edit me) Favourite spots, the trip you still talk about, the one thing you never leave without."
+      "I enjoy camping in Algonquin Provincial Park!"
     ],
     "facts": [
-      { "label": "Favourite spot", "value": "(edit me)" },
-      { "label": "Style", "value": "(edit me)" },
-      { "label": "Next trip", "value": "(edit me)" }
+      { "label": "Favourite spot", "value": "Lake of Two Rivers Campground" }
     ],
     "links": []
   },
   {
     "id": "running",
-    "tagline": "(edit me) Why you run.",
+    "tagline": "Since 2024.",
     "body": [
-      "(edit me) Distance, pace, races you've done or want to do, favourite route in Toronto."
+      "I enjoy running the beltline and down to Evergreen Brickworks!"
     ],
     "facts": [
-      { "label": "Weekly km", "value": "(edit me)" },
-      { "label": "Best 5K", "value": "(edit me)" },
-      { "label": "Next race", "value": "(edit me)" }
+      { "label": "Record Distance", "value": "21.11km" },
+      { "label": "Best 5K", "value": "5:54/km" }
     ],
     "links": []
   }
