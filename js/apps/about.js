@@ -44,9 +44,9 @@ export default {
           </ul>
         </div>` : ''}
         <div class="about-stats">
-          <div class="stat"><b>${esc(p.location || '?')}</b><small>based in</small></div>
-          <div class="stat"><b id="about-time">${localTime(p.timezone)}</b><small>my local time</small></div>
-          ${yearsCoding !== null ? `<div class="stat"><b>${yearsCoding}+ years</b><small>writing code</small></div>` : ''}
+          <div class="stat"><b>${esc(p.location || '?')}</b><small>Based in</small></div>
+          <div class="stat"><b id="about-time">${localTime(p.timezone)}</b><small>My local time</small></div>
+          ${yearsCoding !== null ? `<div class="stat"><b>${yearsCoding}+ years</b><small>Writing code</small></div>` : ''}
         </div>
         <div class="currently">
           <h3>Currently <span class="live-pill" id="about-live" hidden><i></i><span></span></span></h3>
@@ -66,13 +66,13 @@ export default {
         pill.querySelector('span').textContent = st.label;
       }
       const rows = [];
-      if (pr?.game) rows.push(`<li class="live-row"><span>🎮</span><div>playing <b>${esc(pr.game.name)}</b>${pr.game.details ? `<small>${esc(pr.game.details)}${pr.game.state ? ` · ${esc(pr.game.state)}` : ''}</small>` : ''}${pr.game.since ? `<small>for ${elapsed(pr.game.since)}</small>` : ''}</div><span class="live-tag">live</span></li>`);
-      else rows.push(`<li><span>🎮</span>playing <b>${esc(manual.playing || 'nothing')}</b></li>`);
-      if (pr?.spotify) rows.push(`<li class="live-row">${pr.spotify.art ? `<img src="${esc(pr.spotify.art)}" alt="" class="live-art">` : '<span>🎧</span>'}<div>listening to <b>${esc(pr.spotify.song)}</b><small>${esc(pr.spotify.artist)}</small></div><span class="live-tag">live</span></li>`);
-      else rows.push(`<li><span>🎧</span>listening to <b>${esc(manual.listening || 'nothing')}</b></li>`);
+      if (pr?.game) rows.push(`<li class="live-row"><span>🎮</span><div>Playing <b>${esc(pr.game.name)}</b>${pr.game.details ? `<small>${esc(pr.game.details)}${pr.game.state ? ` · ${esc(pr.game.state)}` : ''}</small>` : ''}${pr.game.since ? `<small>For ${elapsed(pr.game.since)}</small>` : ''}</div><span class="live-tag">live</span></li>`);
+      else rows.push(`<li><span>🎮</span>Playing <b>${esc(manual.playing || 'nothing')}</b></li>`);
+      if (pr?.spotify) rows.push(`<li class="live-row">${pr.spotify.art ? `<img src="${esc(pr.spotify.art)}" alt="" class="live-art">` : '<span>🎧</span>'}<div>Listening to <b>${esc(pr.spotify.song)}</b><small>${esc(pr.spotify.artist)}</small></div><span class="live-tag">live</span></li>`);
+      else rows.push(`<li><span>🎧</span>Listening to <b>${esc(manual.listening || 'nothing')}</b></li>`);
       if (pr?.custom?.text) rows.push(`<li class="live-row"><span>${esc(pr.custom.emoji || '💬')}</span><div>${esc(pr.custom.text)}</div><span class="live-tag">status</span></li>`);
-      if (manual.building) rows.push(`<li><span>🛠️</span>building <b>${esc(manual.building)}</b></li>`);
-      if (manual.reading) rows.push(`<li><span>📖</span>reading <b>${esc(manual.reading)}</b></li>`);
+      if (manual.building) rows.push(`<li><span>🛠️</span>Building <b>${esc(manual.building)}</b></li>`);
+      if (manual.reading) rows.push(`<li><span>📖</span>Reading <b>${esc(manual.reading)}</b></li>`);
       list.innerHTML = rows.join('');
     };
     renderCurrent(presence());
@@ -81,7 +81,7 @@ export default {
 
     const timeEl = root.querySelector('#about-time');
     timer = setInterval(() => { timeEl.textContent = localTime(p.timezone); }, 15000);
-    ctx.setStatus(`${esc(p.name)}.exe — hand-edited in data/profile.json`);
+    ctx.setStatus(esc(p.name));
   },
 
   unmount() {

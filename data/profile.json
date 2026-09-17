@@ -9,8 +9,8 @@
     },
     {
       "icon": "💻",
-      "title": "Full-Stack Developer",
-      "detail": "WebApps E2E, K8s, LMS Dev"
+      "title": "Hobbyist Developer",
+      "detail": "WebApps, E2E, WebDev, LMS Dev, ChatBots"
     },
     {
       "icon": "📈",
@@ -25,16 +25,16 @@
   },
   "bio": [
     "Hi, I'm Hudson! Welcome to my site!",
-    "Poke around! Find out more about me!"
+    "Feel free to poke around to find out more about me!"
   ],
   "location": "Toronto, Canada",
   "timezone": "America/Toronto",
   "codingSince": 2015,
   "currently": {
-    "playing": "",
-    "listening": "",
-    "building": "",
-    "reading": ""
+    "Playing": "Helldivers 2",
+    "Listening To": "Nightcore",
+    "Building": "",
+    "Reading": ""
   },
   "contactBlurb": "Find me around the internet. Discord is fastest.",
   "socials": [

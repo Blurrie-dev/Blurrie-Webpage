@@ -158,6 +158,6 @@ export default {
 
     root.addEventListener('pointerup', () => { if (!getSelection().toString()) input.focus(); });
     setTimeout(() => input.focus(), 50);
-    ctx.setStatus('fake.sh — no real commands were harmed');
+    ctx.setStatus('Terminal');
   },
 };
