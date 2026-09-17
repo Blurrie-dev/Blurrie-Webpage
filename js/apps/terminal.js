@@ -158,6 +158,5 @@ export default {
 
     root.addEventListener('pointerup', () => { if (!getSelection().toString()) input.focus(); });
     setTimeout(() => input.focus(), 50);
-    ctx.setStatus('Terminal');
   },
 };

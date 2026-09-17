@@ -73,7 +73,6 @@
 [data-theme="fluent"] .tb-btn svg [stroke] { stroke-width: 1.1; }
 [data-theme="fluent"] .tb-btn svg [fill="currentColor"] { height: 1.2px; }
 [data-theme="fluent"] .window-body { margin: 0; box-shadow: none; border-top: 1px solid #e5e5e5; }
-[data-theme="fluent"] .statusbar { margin: 0; padding: 3px 10px; background: #f7f7f7; border-top: 1px solid #e5e5e5; box-shadow: none; }
 [data-theme="fluent"] .resize-handle { background: none; }
 
 /* Taskbar: dark, logo-only start button, underline for the active task, stacked clock */
@@ -389,13 +388,6 @@
 [data-theme="luna"] .tb-btn svg { width: 11px; height: 11px; }
 [data-theme="luna"] .tb-btn svg [stroke] { stroke-width: 2; }
 [data-theme="luna"] .window-body { margin: 0; box-shadow: none; }
-[data-theme="luna"] .statusbar {
-  margin: 0;
-  padding: 3px 8px;
-  background: var(--face);
-  box-shadow: inset 0 1px 0 #ffffff;
-  border-top: 1px solid var(--face-dark);
-}
 [data-theme="luna"] .resize-handle {
   background: radial-gradient(circle at 15px 15px, #fff 1px, transparent 1.5px) 0 0 / 4px 4px;
   opacity: .9;

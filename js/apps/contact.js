@@ -62,7 +62,6 @@ export default {
     onLive = (e) => renderLive(e.detail);
     live.addEventListener('update', onLive);
 
-    ctx.setStatus(`${socials.length} way${socials.length === 1 ? '' : 's'} to reach me`);
   },
 
   unmount() {

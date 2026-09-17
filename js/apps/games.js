@@ -103,7 +103,6 @@ export default {
         </dl>
         ${g.take ? `<blockquote class="steam-take">“${esc(g.take)}”</blockquote>` : ''}
         ${g.url || g.appid ? `<a class="btn" href="${esc(g.url || `https://store.steampowered.com/app/${g.appid}`)}" target="_blank" rel="noopener noreferrer">Store page ↗</a>` : ''}`;
-      ctx.setStatus(`${esc(g.title)} — ${(g.hours || 0).toLocaleString()} hours. ${total ? Math.round((g.hours || 0) / total * 100) : 0}% of my total playtime.`);
     };
 
     list.addEventListener('click', (e) => {

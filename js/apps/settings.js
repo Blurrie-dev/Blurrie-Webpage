@@ -70,7 +70,6 @@ export default {
       location.reload();
     });
 
-    ctx.setStatus('Changes are saved instantly');
   },
 
   unmount() {

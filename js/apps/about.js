@@ -81,7 +81,6 @@ export default {
 
     const timeEl = root.querySelector('#about-time');
     timer = setInterval(() => { timeEl.textContent = localTime(p.timezone); }, 15000);
-    ctx.setStatus(esc(p.name));
   },
 
   unmount() {

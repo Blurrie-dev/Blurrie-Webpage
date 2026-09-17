@@ -75,7 +75,6 @@ export function openApp(id, { restore = null, param = null } = {}) {
   const win = {
     id, app, el,
     body: el.querySelector('.window-body'),
-    status: el.querySelector('.statusbar'),
     rect: null, z: 0, order: ++openCount,
     minimized: false, maximized: false,
   };
@@ -104,7 +103,6 @@ export function openApp(id, { restore = null, param = null } = {}) {
     // Update the deep link for this window, e.g. setHash('hudsonos') → #projects/hudsonos
     setHash(sub) { history.replaceState(null, '', sub ? `#${id}/${encodeURIComponent(sub)}` : `#${id}`); },
     setTitle(t) { el.querySelector('.titlebar-title').textContent = t; emit('change', { id }); },
-    setStatus(html) { win.status.hidden = !html; win.status.innerHTML = html ?? ''; },
   };
 
   try {

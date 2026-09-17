@@ -41,7 +41,6 @@ function renderList() {
       </div>
     </div>`;
   ctx.setHash(null);
-  ctx.setStatus(`${projects.length} object${projects.length === 1 ? '' : 's'}`);
 }
 
 async function renderDetail(id) {
@@ -77,7 +76,6 @@ async function renderDetail(id) {
 
   root.querySelector('#ex-back').addEventListener('click', () => { ctx.sfx.play('click'); renderList(); });
   ctx.setHash(p.id);
-  ctx.setStatus(`${esc(p.name)} — ${(p.tech || []).join(', ') || 'no tech listed'}`);
 
   if (p.repo) {
     const n = await fetchStars(p.repo);

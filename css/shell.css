@@ -122,17 +122,6 @@
 .window-body.no-pad { padding: 0; }
 [data-theme="classic"] .window-body { margin-top: 3px; }
 
-.statusbar {
-  flex: none;
-  margin: 0 var(--win-pad) var(--win-pad);
-  padding: 2px 6px;
-  font-size: 11px;
-  color: var(--text-muted);
-  box-shadow: var(--bevel-in);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 .resize-handle {
   position: absolute;

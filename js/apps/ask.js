@@ -51,10 +51,8 @@ export default {
 
     if (!endpoint) {
       addBot('This app isn\'t connected yet — deploy the worker in <code>worker/</code> and put its URL in <code>data/profile.json → assistant.endpoint</code>.', true);
-      ctx.setStatus('Not configured');
       return;
     }
-    ctx.setStatus('Ready');
 
     function addUser(text) {
       log.querySelector('#ask-chips')?.remove();
@@ -96,7 +94,6 @@ export default {
       history.push({ role: 'user', content: q });
       input.value = '';
       input.disabled = sendBtn.disabled = true;
-      ctx.setStatus('Thinking…');
 
       const bubble = addBot('');
       bubble.classList.add('typing');
@@ -136,13 +133,11 @@ export default {
         bubble.classList.remove('typing');
         const clean = renderReply(bubble, text || '…');
         history.push({ role: 'assistant', content: clean });
-        ctx.setStatus(usage ? `${usage.input + usage.output} tokens · ≈ $${((usage.input * 1 + usage.output * 5) / 1e6).toFixed(4)}` : 'Ready');
       } catch (err) {
         bubble.classList.remove('typing');
         bubble.classList.add('error');
         bubble.textContent = err.name === 'AbortError' ? 'Cancelled.' : (err.message || 'Something went wrong.');
         history.pop(); // don't keep a question that got no answer
-        ctx.setStatus('Error');
         ctx.sfx.play('error');
       } finally {
         abort = null;

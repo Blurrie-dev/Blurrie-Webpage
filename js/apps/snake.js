@@ -146,7 +146,6 @@ export default {
 
     draw();
     setTimeout(() => root.focus(), 50);
-    ctx.setStatus('Arrows / WASD to move · space to pause · eat the red dots');
   },
 
   unmount() {

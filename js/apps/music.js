@@ -42,7 +42,6 @@ export default {
       const t = tracks[i];
       frame.src = `https://open.spotify.com/embed/track/${encodeURIComponent(t.spotify)}?utm_source=generator&theme=0`;
       pl.querySelectorAll('li').forEach((li) => li.classList.toggle('current', +li.dataset.i === i));
-      ctx.setStatus(`${t.artist} — ${t.title}`);
     };
 
     pl.addEventListener('click', (e) => {
